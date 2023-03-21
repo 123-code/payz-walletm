@@ -1,29 +1,19 @@
 import React from 'react';
 import { View, Text, StyleSheet,Button,Pressable } from 'react-native';
-import "@ethersproject/shims"
-const Welcome = () => {
-    return(
-        <>
-         <View style={styles.container} >
-            <Text style={styles.title}> Welcome to Payz"</Text>
-            <Text style={styles.text}> Get started by creating a user account </Text>
-            </View>
+import { Input } from 'native-base';
+export default function CreatePIN() {
+return(
+    <>
+        <View style={styles.container} >
+            <Text style={styles.title}> Create a PIN</Text>
+        </View>
 
-            <View style={ styles.btncontainer}> 
-
-               <Pressable style={styles.Pressable}> 
-                <Text style={styles.buttontext}> SMS </Text>
-               </Pressable>
-
-            <Pressable style={styles.Pressable}>
-            <Text style={styles.buttontext}> Sign up with Google </Text>
-            </Pressable>
-
-            </View>
-        </>
-    )
+        <View>
+       <Input mx="3" placeholder="Input" w="100%" />
+        </View>
+    </>
+)
 }
-export default Welcome;
 
 const styles = StyleSheet.create({
     container: {
@@ -64,5 +54,4 @@ const styles = StyleSheet.create({
      
 
     }
-    
 })

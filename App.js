@@ -1,14 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NativeBaseProvider, Text, Box } from "native-base";
 import Welcome from './Screens/welcome.jsx';
+import CreatePIN from './Screens/CreatePIN.jsx';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Welcome />
-      {console.log("Hello World")}
+    <NativeBaseProvider>
+
+
+      <CreatePIN  />
+
       <StatusBar style="auto" />
-    </View>
+
+    </NativeBaseProvider>
   );
 }
 

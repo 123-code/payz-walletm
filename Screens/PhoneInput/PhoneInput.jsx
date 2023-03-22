@@ -1,4 +1,5 @@
 import React,{useState,useRef} from 'react';
+import {sendSmsVerification} from '../../api/Verify';
 import {
     SafeAreaView,
     StyleSheet,
@@ -38,6 +39,9 @@ import {
          <TouchableOpacity
            style={styles.button}
            onPress={() => {
+            sendSmsVerification(formattedValue).then((sent)=>{
+                console.log("SMS sent!",formattedValue);
+            })
              // TODO - send SMS!
            }}
          >

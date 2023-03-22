@@ -3,13 +3,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NativeBaseProvider,Box } from "native-base";
 import Welcome from './Screens/welcome.jsx';
 import CreatePIN from './Screens/CreatePIN.jsx';
+import PhoneNumberInput from './Screens/PhoneInput/PhoneInput.jsx';
 
 export default function App() {
   return (
     <NativeBaseProvider>
 
 
-      <CreatePIN  />
+      <PhoneNumberInput />
 
       <StatusBar style="auto" />
 

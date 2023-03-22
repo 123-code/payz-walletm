@@ -10,7 +10,6 @@ export default function CreatePIN() {
       </View>
 
       <View style={styles.inputContainer}>
-     
         <Input mx={1}  w="20%"  style={styles.input} />
         <Input mx={1}  w="20%"  style={styles.input} />
         <Input mx={2}  w="20%"  style={styles.input} />

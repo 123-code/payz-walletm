@@ -11,9 +11,10 @@ const Stack = createNativeStackNavigator();
 export default function AppStack(){
     return (
       <Stack.Navigator>
+        <Stack.Screen name="CreatePIN" component={CreatePIN}/>
 <Stack.Screen name="Welcome" component={Welcome}/>
 <Stack.Screen name="PhoneNumberInput" component={PhoneNumberInput}/>
-<Stack.Screen name="CreatePIN" component={CreatePIN}/>
+
 <Stack.Screen name="Otp" component={Otp}/>
 <Stack.Screen name="Gated" component={Gated}/>
       </Stack.Navigator>

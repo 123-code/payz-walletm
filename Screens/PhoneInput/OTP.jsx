@@ -9,12 +9,12 @@ const Otp = ({ route, navigation }) => {
  const [invalidCode, setInvalidCode] = useState(false);
  return (
    <SafeAreaView style={styles.wrapper}>
-     <Text style={styles.prompt}>Enter the code we sent you</Text>
+     <Text style={styles.prompt}>Ingresa el código que te enviamos</Text>
      <Text style={styles.message}>
-       {`Your phone (${phoneNumber}) will be used to protect your account each time you log in.`}
+       {`Tu número (${phoneNumber}) será usado para proteger tu cuenta cada vez que ingreses.`}
      </Text>
      <Button
-       title="Edit Phone Number"
+       title="Editar número"
        onPress={() => navigation.replace("PhoneNumber")}
      />
      <OTPInputView
@@ -26,7 +26,7 @@ const Otp = ({ route, navigation }) => {
        onCodeFilled={(code) => {
          checkVerification(phoneNumber, code).then((success) => {
            if (!success) setInvalidCode(true);
-           success && navigation.replace("Gated");
+           success && navigation.replace("CreatePIN");
          });
        }}
      />

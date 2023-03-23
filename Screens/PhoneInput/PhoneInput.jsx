@@ -1,5 +1,6 @@
 import React,{useState,useRef} from 'react';
 import {sendSmsVerification} from '../../api/Verify';
+import { useNavigation } from '@react-navigation/native';
 import {
     SafeAreaView,
     StyleSheet,
@@ -10,6 +11,7 @@ import {
    import PhoneInput from "react-native-phone-number-input";
 
    const PhoneNumberInput = ()=>{
+    const navigation = useNavigation();
     const [value, setValue] = useState();
     const [formattedValue, setFormattedValue] = useState();
     const phoneInput = useRef(null);
@@ -40,7 +42,7 @@ import {
            style={styles.button}
            onPress={() => {
             sendSmsVerification(formattedValue).then((sent)=>{
-                console.log("SMS sent!",formattedValue);
+               navigation.navigate("Otp",{ phoneNumber: formattedValue });
             })
              // TODO - send SMS!
            }}

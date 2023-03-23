@@ -1,17 +1,19 @@
 import React from 'react';
 import { View, Text, StyleSheet,Button,Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import "@ethersproject/shims"
 const Welcome = () => {
+    const navigation = useNavigation();
     return(
         <>
          <View style={styles.container} >
-            <Text style={styles.title}> Welcome to Payz"</Text>
-            <Text style={styles.text}> Get started by creating a user account </Text>
+            <Text style={styles.title}> Bienvenido a Payz</Text>
+            <Text style={styles.text}> verifica tu número celular para empezar  </Text>
             </View>
 
             <View style={ styles.btncontainer}> 
 
-               <Pressable style={styles.Pressable}> 
+               <Pressable style={styles.Pressable} onPress={()=>{navigation.navigate("PhoneNumberInput")}}> 
                 <Text style={styles.buttontext}> SMS </Text>
                </Pressable>
 
@@ -27,7 +29,7 @@ export default Welcome;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 3,
         alignItems: 'left',
         justifyContent: 'left',
         padding: 80,

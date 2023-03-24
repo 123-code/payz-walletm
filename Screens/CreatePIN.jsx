@@ -1,6 +1,9 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { Input } from 'native-base';
+import {CreateSQLiteTable}  from '../util/SQLiteconn'
+
+import * as SQLite from 'expo-sqlite';
 
 export default function CreatePIN() {
   const [numbers, setNumbers] = useState({
@@ -10,6 +13,13 @@ export default function CreatePIN() {
     Number4: 0,
   });
 
+
+   function SQLiteDatabaseConn(){
+    return openDatabase({name: 'todo-data.db', location: 'default'});
+}
+
+
+
 const HandleInputChange = (ename,evalue)=>{
   setNumbers({
     ...numbers,
@@ -17,10 +27,15 @@ const HandleInputChange = (ename,evalue)=>{
   })
 }
 
-const HandleSubmit = ()=>{
-  console.log(numbers)
-  //TODO : Encrypt them and store them on SQLITE
-}
+
+ const HandleSubmit = async () => {
+  try{
+    CreateSQLiteTable();
+  }catch(err){
+    console.error(err);
+  }
+  };
+
 
   return (
     <>

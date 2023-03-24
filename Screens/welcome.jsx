@@ -12,14 +12,22 @@ const Welcome = () => {
             </View>
 
             <View style={ styles.btncontainer}> 
+<Text style={styles.text}> Ingresa con </Text>
+            <Pressable
+  style={({ pressed }) => [
+    {
+      backgroundColor: pressed ? '#add8e6' : '#87cefa',
+      borderRadius: 10,
+      padding: 10,
+    },
+    styles.Pressable,
+  ]}
+  onPress={() => {
+    navigation.navigate('PhoneNumberInput');
+  }}>
+  <Text style={styles.buttontext}> SMS </Text>
+</Pressable>
 
-               <Pressable style={styles.Pressable} onPress={()=>{navigation.navigate("PhoneNumberInput")}}> 
-                <Text style={styles.buttontext}> SMS </Text>
-               </Pressable>
-
-            <Pressable style={styles.Pressable}>
-            <Text style={styles.buttontext}> Sign up with Google </Text>
-            </Pressable>
 
             </View>
         </>
@@ -33,16 +41,18 @@ const styles = StyleSheet.create({
         alignItems: 'left',
         justifyContent: 'left',
         padding: 80,
+        backgroundColor: "#EEDED6",
       },
       btncontainer:{
         flex: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: "#EEDED6",
       },
     title:{
         fontSize: 40,
         fontWeight: 'bold',
-        color: 'black',
+        color: 'green',
         fontFamily:'Futura'
     },
     text:{

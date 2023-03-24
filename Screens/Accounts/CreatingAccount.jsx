@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { ActivityIndicator, StyleSheet, View, Text } from 'react-native';
-import crypto from 'react-native-crypto';
+
 
 export default function CreatingAccount() {
   const [publicKey, setPublicKey] = useState(null);
 
   useEffect(() => {
-    const crypto = window.crypto || window.msCrypto;
+ 
     const generateKeys = async () => {
-      const keyPair = await crypto.generateKeyPair('ec', { namedCurve: 'P-256' });
-      const publicKeyData = await crypto.exportKey('spki', keyPair.publicKey);
-      setPublicKey(publicKeyData);
+      
+
     };
     generateKeys();
   }, []);

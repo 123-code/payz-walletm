@@ -19,6 +19,6 @@ export default function AppStack(){
 <Stack.Screen name="Gated" component={Gated}/>
 <Stack.Screen name="CreatePIN" component={CreatePIN}/>
 <Stack.Screen name="CreatingAccount" component={CreatingAccount}/>
-      </Stack.Navigator>
+</Stack.Navigator>
     )
 }

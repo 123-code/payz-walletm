@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@coingrig/wallet-generator": "^0.1.7",
     "@ethersproject/shims": "^5.7.0",
     "@react-native-community/clipboard": "^1.5.1",
     "@react-navigation/native": "^6.1.6",

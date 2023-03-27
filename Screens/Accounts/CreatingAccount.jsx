@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ActivityIndicator, StyleSheet, View, Text } from 'react-native';
+import { generateMnemonic, generateWallet } from '@coingrig/wallet-generator';
 
 
 export default function CreatingAccount() {
@@ -8,8 +9,17 @@ export default function CreatingAccount() {
   useEffect(() => {
  
     const generateKeys = async () => {
-      
-
+      try{
+        const words = 12; // or 24
+        const mnemonic = await generateMnemonic(words);
+        
+        // Generate wallet
+        const chain = 'BTC' // or ETH
+        let wallet = await generateWallet(mnemonic, chain);
+        wallet = JSON.parse(wallet);
+        console.log(wallet.address, wallet.privateKey);
+      }catch(err){console.error(err)}
+    
     };
     generateKeys();
   }, []);

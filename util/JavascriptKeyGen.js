@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import crypto from 'react-native-crypto';
-// Import the `hexStringToUint8Array` utility function
-//import { hexStringToUint8Array } from 'js-crypto-utils';
+import { generateMnemonic, generateWallet } from '@coingrig/wallet-generator';
 
-// Define the `generateKeys` function
-export const GenerateKeys = async () => {
-    const keyPair = await crypto.generateKeyPair('ec', { namedCurve: 'P-256' });
-    const publicKeyData = await crypto.exportKey('spki', keyPair.publicKey);
-    console.log(publicKeyData);
-}
+// Generate mnemonic
+const words = 12; // or 24
+const mnemonic = await generateMnemonic(words);
+
+// Generate wallet
+const chain = 'BTC' // or ETH
+let wallet = await generateWallet(mnemonic, chain);
+wallet = JSON.parse(wallet);
+console.log(wallet.address, wallet.privateKey);

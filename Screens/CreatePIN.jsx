@@ -2,10 +2,11 @@ import React,{useState,useEffect} from 'react';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { Input } from 'native-base';
 import {CreateSQLiteTable}  from '../util/SQLiteconn'
-
+import { useNavigation } from '@react-navigation/native';
 import * as SQLite from 'expo-sqlite';
 
 export default function CreatePIN() {
+  const navigation = useNavigation();
   const [numbers, setNumbers] = useState({
     Number1: 0,
     Number2: 0,
@@ -29,8 +30,10 @@ const HandleInputChange = (ename,evalue)=>{
 
 
  const HandleSubmit = async () => {
+  navigation.navigate('CreatingAccount')
   try{
     CreateSQLiteTable();
+    
   }catch(err){
     console.error(err);
   }

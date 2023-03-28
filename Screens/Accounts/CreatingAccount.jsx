@@ -1,27 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { ActivityIndicator, StyleSheet, View, Text } from 'react-native';
-import { generateMnemonic, generateWallet } from '@coingrig/wallet-generator';
+import { GenerateWallet } from '../../util/JavascriptKeyGen';
 
 
 export default function CreatingAccount() {
-  const [publicKey, setPublicKey] = useState(null);
+  const [publicKey, setPublicKey] = useState(0);
 
   useEffect(() => {
+    try{
+      GenerateWallet();
+      setPublicKey(GenerateWallet());
+    }catch(err){
+      console.error(err);
+    }
  
-    const generateKeys = async () => {
-      try{
-        const words = 12; // or 24
-        const mnemonic = await generateMnemonic(words);
-        
-        // Generate wallet
-        const chain = 'BTC' // or ETH
-        let wallet = await generateWallet(mnemonic, chain);
-        wallet = JSON.parse(wallet);
-        console.log(wallet.address, wallet.privateKey);
-      }catch(err){console.error(err)}
-    
-    };
-    generateKeys();
+   
   }, []);
 
   if (!publicKey) {
@@ -36,7 +29,7 @@ export default function CreatingAccount() {
 
   return (
     <View>
-      <Text style={styles.text}>Public Key: {JSON.stringify(publicKey)}</Text>
+      <Text style={styles.text}>publicKey</Text>
     </View>
   );
 }

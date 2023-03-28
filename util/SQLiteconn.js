@@ -6,7 +6,7 @@ export function CreateSQLiteTable() {
         const db = SQLite.openDatabase('mydatabase.db');
         db.transaction((tx) => {
           tx.executeSql(
-            'CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT)'
+            'CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, hash TEXT)'
           );
         });
         console.log('success');
@@ -15,6 +15,8 @@ export function CreateSQLiteTable() {
       }
     
   }
+
+  
 
 
 

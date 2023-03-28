@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet,Button,Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import "@ethersproject/shims"
+//pagomedios
 const Welcome = () => {
     const navigation = useNavigation();
     return(
@@ -36,19 +37,19 @@ const Welcome = () => {
 export default Welcome;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 3,
-        alignItems: 'left',
-        justifyContent: 'left',
-        padding: 80,
-        backgroundColor: "#EEDED6",
-      },
-      btncontainer:{
-        flex: 5,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: "#EEDED6",
-      },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 80,
+    backgroundColor: "#EEDED6",
+  },
+  btncontainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: "#EEDED6",
+  },
     title:{
         fontSize: 40,
         fontWeight: 'bold',

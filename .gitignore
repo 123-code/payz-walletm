@@ -10,7 +10,22 @@ npm-debug.*
 *.orig.*
 web-build/
 .env
-
+android/app/build/
+ios/build/
+yarn.lock
+.vscode/
+# Ignore logs
+*.log
+# Ignore build files
+*.o
+*.ko
+*.obj
+*.elf
+*.exe
+*.out
+*.so
+# Ignore IntelliJ Idea files
+.idea/
 # macOS
 .DS_Store
 

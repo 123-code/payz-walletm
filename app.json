@@ -10,20 +10,20 @@
       "image": "./assets/Payz.png",
       "resizeMode": "contain",
       "backgroundColor": "#3BB171"
-
-
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.naranjojose256.payzwalletm"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.naranjojose256.payzwalletm"
     },
     "web": {
       "favicon": "./assets/favicon.png"

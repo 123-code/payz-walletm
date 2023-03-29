@@ -3,7 +3,7 @@ import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { Input } from 'native-base';
 import {CreateSQLiteTable}  from '../util/SQLiteconn'
 import { useNavigation } from '@react-navigation/native';
-import * as SQLite from 'expo-sqlite';
+
 
 export default function CreatePIN() {
   const navigation = useNavigation();
@@ -15,9 +15,6 @@ export default function CreatePIN() {
   });
 
 
-   function SQLiteDatabaseConn(){
-    return openDatabase({name: 'todo-data.db', location: 'default'});
-}
 
 
 
@@ -52,8 +49,8 @@ const HandleInputChange = (ename,evalue)=>{
       <View style={styles.inputContainer}>
         <Input mx={1}  w="20%"  style={styles.input} onChangeText={(text)=>HandleInputChange('Number1',text)} />
         <Input mx={1}  w="20%"  style={styles.input} onChangeText={(text)=>HandleInputChange('Number2',text)} />
-        <Input mx={2}  w="20%"  style={styles.input} onChangeText={(text)=>HandleInputChange('Number3',text)} />
-        <Input mx={2}  w="20%" style={styles.input} onChangeText={(text)=>HandleInputChange('Number4',text)} />
+        <Input mx={1}  w="20%"  style={styles.input} onChangeText={(text)=>HandleInputChange('Number3',text)} />
+        <Input mx={1}  w="20%" style={styles.input} onChangeText={(text)=>HandleInputChange('Number4',text)} />
       </View>
       
       <Pressable style={styles.button} onPress={HandleSubmit}>

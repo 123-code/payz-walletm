@@ -1,8 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { Input } from 'native-base';
-import {CreateSQLiteTable}  from '../util/SQLiteconn'
+import {CreateSQLiteTable,StorePrivateKeyHash}  from '../util/SQLiteconn'
 import { useNavigation } from '@react-navigation/native';
+import { GenerateWallet } from '../../util/JavascriptKeyGen';
+import { EncryptValues } from '../../util/EncryptKeyPin';
 
 
 export default function CreatePIN() {
@@ -26,15 +28,35 @@ const HandleInputChange = (ename,evalue)=>{
 }
 
 
+const GenerateBitcoinKeys = ()=>{
+  try{
+    const key = GenerateWallet();
+    return key;
+  }catch(err){
+    console.error(err);
+  }
+}
+
+const CheckforExistingAccount = ()=>{
+
+}
+
+
  const HandleSubmit = async () => {
   navigation.navigate('CreatingAccount')
   try{
     CreateSQLiteTable();
-    
+
+    const private_key = GenerateBitcoinKeys();
+    const encrypted = EncryptValues(private_key,numbers);
+    StorePrivateKeyHash(encrypted);
   }catch(err){
     console.error(err);
   }
   };
+
+
+
 
 
   return (

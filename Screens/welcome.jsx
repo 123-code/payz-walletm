@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet,Button,Pressable } from 'react-native';
+import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Stack, Button } from "@react-native-material/core";
 import "@ethersproject/shims"
 //pagomedios
 const Welcome = () => {
@@ -14,6 +15,9 @@ const Welcome = () => {
 
             <View style={ styles.btncontainer}> 
 <Text style={styles.text}> Ingresa con </Text>
+<Stack>
+  
+</Stack>
             <Pressable
   style={({ pressed }) => [
     {
@@ -42,7 +46,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 80,
-    backgroundColor: "#EEDED6",
+    backgroundColor: '#EEDED6',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   btncontainer: {
     flex: 1,

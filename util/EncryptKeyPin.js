@@ -19,7 +19,7 @@ export function EncryptValues(pkey,pin){
 
         const salt = BcryptReactNative.getSalt(10);
         const hash = BcryptReactNative.hash(salt,pkey);
-        const is
+       // const is
 
     }
     catch(err){

@@ -18,19 +18,28 @@ export function CreateSQLiteTable() {
   }
 
 
-  export function CheckforConnection(){
-    const hasaccount = false;
-    db.transaction((tx)=>{
-      tx.executeSql(`SELECT * FROM users`,(tx,results)=>{
-        if(results.rows.length > 0){
-          hasaccount = true;
-        }
-      })
-    })
-return hasaccount;
-  }
-
-// iserts data into table 
+  
+  export const CheckForAccountCreation = async () => {
+    try {
+      let created = false;
+      await new Promise((resolve, reject) => {
+        db.transaction((tx) => {
+          tx.executeSql('SELECT * FROM users', [], (tx, results) => {
+            if (results.rows.length > 0) {
+              created = true;
+              console.log(results);
+            }
+            resolve();
+          });
+        }, reject);
+      });
+      return created;
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  
+// inserts data into table 
 export function StorePrivateKeyHash(pkey){
     // TODO Hash the private key and the PIN
 
@@ -38,7 +47,7 @@ export function StorePrivateKeyHash(pkey){
       db.transaction((tx)=>{
 tx.executeSql(`INSERT INTO users(hash) VALUES(${pkey})`);
       });
-console.log('data inserted');
+console.log('data inserted' + pkey);
     }catch(err){
       console.error(err);
     }

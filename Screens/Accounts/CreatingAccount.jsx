@@ -1,15 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { ActivityIndicator, StyleSheet, View, Text } from 'react-native';
 import { GenerateWallet } from '../../util/JavascriptKeyGen';
-
-
+import {GetInsertedData} from '../../util/SQLiteconn';
+import PayzButton from '../../Components/PayzButton';
+//Components/PayzButton.jsx
 export default function CreatingAccount() {
   const [publicKey, setPublicKey] = useState(0);
+  const [existente,setexistente] = useState(null);
+
+
+
+  const VerifyAccounts = async()=>{
+    try{
+      const accountverifying= await GetInsertedData();
+      if(accountverifying){
+       setexistente(true)
+      }
+      else if(!accountverifying){
+        setexistente(false)
+      }
+
+    }catch(err){
+      console.error(err);
+    }
+  }
 
   useEffect(() => {
     try{
-      GenerateWallet();
-      setPublicKey(GenerateWallet());
+      //GenerateWallet();
+    //  setPublicKey(GenerateWallet());
+    VerifyAccounts();
     }catch(err){
       console.error(err);
     }
@@ -17,21 +37,26 @@ export default function CreatingAccount() {
    
   }, []);
 
-  if (!publicKey) {
+  if (!existente) {
     return (
       <View>
-        <Text style={styles.text}>Creando tu cuenta</Text>
-        <ActivityIndicator size="large" color="#0000ff" />
+        <PayzButton label="Crear cuenta"/>
       </View>
     );
   }
   
+  else if(existente){
+    return (
+      <View>
+      <Text style={styles.text}> Hemos detectado que has creado una cuenta anteriormente</Text>
+       <PayzButton label="Crear cuenta nueva"/>
+<Text> {"o"} </Text>
+       <PayzButton label="Usar cuenta existente"/>
+      </View>
+    );
+  }
 
-  return (
-    <View>
-      <Text style={styles.text}>publicKey</Text>
-    </View>
-  );
+  
 }
 
 
@@ -46,7 +71,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   text:{
-    fontSize: 30,
+    fontSize: 20,
     color: 'black',
     fontFamily:'Futura',
     justifyContent: 'center',

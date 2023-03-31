@@ -49,12 +49,38 @@ export async function CreateSQLiteTable() {
           console.log(`Total rows: ${rows.length}`);
           for (let i = 0; i < rows.length; i++) {
             let { id, hash } = rows.item(i);
+
             console.log(`User ID: ${id}, Hash: ${hash}`);
            
           }
         });
+        
       });
-    
+      return true;
+    } catch (err) {
+      console.error(err);
+      return false
+
+    }
+  }
+
+
+  export async function GetInsertedData() {
+    try {
+      db.transaction((tx) => {
+        tx.executeSql('SELECT * FROM users', items=[], (tx, results) => {
+          let rows = results.rows;
+          console.log(`Total rows: ${rows.length}`);
+          for (let i = 0; i < rows.length; i++) {
+            let { id, hash } = rows.item(i);
+            
+            console.log(`User ID: ${id}, Hash: ${hash}`);
+           items.push({hash});
+          }
+        });
+        
+      });
+      return items;
     } catch (err) {
       console.error(err);
       return false

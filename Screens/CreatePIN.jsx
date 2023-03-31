@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { Input } from 'native-base';
-import {CreateSQLiteTable,StorePrivateKeyHash,CheckForAccountCreation,CheckIfTableExists,CheckInsertedData}  from '../util/SQLiteconn'
+import {CreateSQLiteTable,StorePrivateKeyHash,CheckIfTableExists,CheckInsertedData}  from '../util/SQLiteconn'
 import { useNavigation } from '@react-navigation/native';
 import { GenerateWallet,EncryptValues } from '../util/JavascriptKeyGen';
+import PayzButton from '../Components/PayzButton';
 //import { EncryptValues } from '../util/EncryptKeyPin';
 
 //StorePrivateKeyHash
@@ -75,10 +76,7 @@ const HandleSubmit = async () => {
         <Input mx={1}  w="20%"  style={styles.input} onChangeText={(text)=>HandleInputChange('Number3',text)} />
         <Input mx={1}  w="20%" style={styles.input} onChangeText={(text)=>HandleInputChange('Number4',text)} />
       </View>
-      
-      <Pressable style={styles.button} onPress={HandleSubmit}>
-             <Text style={styles.text}> Listo </Text> 
-        </Pressable>
+      <PayzButton label="Listo" onPress={HandleSubmit}/>
     </>
   );
 }

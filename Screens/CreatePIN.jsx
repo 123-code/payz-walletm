@@ -1,12 +1,12 @@
 import React,{useState,useEffect} from 'react';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { Input } from 'native-base';
-import {CreateSQLiteTable,StorePrivateKeyHash,CheckForAccountCreation}  from '../util/SQLiteconn'
+import {CreateSQLiteTable,StorePrivateKeyHash,CheckForAccountCreation,CheckIfTableExists,CheckInsertedData}  from '../util/SQLiteconn'
 import { useNavigation } from '@react-navigation/native';
 import { GenerateWallet,EncryptValues } from '../util/JavascriptKeyGen';
 //import { EncryptValues } from '../util/EncryptKeyPin';
 
-
+//StorePrivateKeyHash
 export default function CreatePIN() {
   const navigation = useNavigation();
   const [numbers, setNumbers] = useState({
@@ -40,19 +40,21 @@ const GenerateBitcoinKeys = ()=>{
 
 
 
- const HandleSubmit = async () => {
+const HandleSubmit = async () => {
   navigation.navigate('CreatingAccount')
   try{
-    CreateSQLiteTable();
+    await CreateSQLiteTable();
+    const tableExists = await CheckIfTableExists();
+    console.log(`Table created: ${tableExists}`);
     const private_key = await GenerateBitcoinKeys();
     //const encrypted = EncryptValues(private_key,numbers);
-    StorePrivateKeyHash(private_key);
-    const created = await CheckForAccountCreation();
+    await StorePrivateKeyHash(private_key);
+    const created = await CheckInsertedData();
     console.log(`Account created: ${created}`);
   }catch(err){
     console.error(err);
   }
-  };
+};
 
 
 

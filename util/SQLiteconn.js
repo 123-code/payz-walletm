@@ -80,7 +80,7 @@ export async function CreateSQLiteTable() {
         });
         
       });
-      //return items;
+      return items;
     } catch (err) {
       console.error(err);
       return false

@@ -5,14 +5,33 @@ import {GetInsertedData} from '../../util/SQLiteconn';
 
 export default function HaveAccount(){
     const [items,setitems] = useState([]);
+    const [accounts,setaccounts] = useState([]);
   
 
 
 const getAccountItems = async ()=>{
     const getitems = await GetInsertedData();
-    setitems(getitems);
-    console.log("items");
+    setitems(getitems.items);
+    let accounts = [];
+    getitems.map((item,index)=>{
+        console.log("ITEM" + item.hash)
+        accounts.push(item.hash);
+        setaccounts(accounts);
+    })
+
 }
+
+const ShowAccountButtons = ()=>{
+   {accounts.map((account,index)=>{
+    return(
+        <Pressable key={index}>
+            <Text>{account}</Text>
+        </Pressable>
+    )
+   })}
+}
+
+
 
     useEffect(()=>{
         try{
@@ -29,11 +48,7 @@ const getAccountItems = async ()=>{
         <View>
                <Text>Selecciona una de tus cuentas</Text>
             
-                {items.map((item,index)=>{
-                return(
-                    <Text key={index}>{item}</Text>
-                )
-                })}
+                <Text> Cuenta: {items} </Text>
             
         </View>
         </View>

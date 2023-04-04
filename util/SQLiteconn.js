@@ -40,6 +40,29 @@ export async function CreateSQLiteTable() {
       return false;
     }
   }
+
+  export async function StorePublicKey({PublicKey}){
+
+    return new Promise((resolve,reject)=>{
+      try{
+        db.transaction((tx)=>{
+          tx.executeSql(`INSERT INTO users(pkey) VALUES('${PublicKey}')`),[]
+          ,(_,result)=>{
+            console.log('Data inserted successfully');
+            resolve(result.rowsAffected);
+          },
+          (_,error)=>{
+            console.error(error);
+            reject(error);
+          }
+        })
+  
+      }catch(err){
+        console.error(err);
+      }
+    })
+    
+  }
   
   export async function CheckInsertedData() {
     

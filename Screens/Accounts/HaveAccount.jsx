@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { View,Text, Pressable, StyleSheet } from 'react-native';
 import {GetInsertedData} from '../../util/SQLiteconn';
+import {SmallButton} from '../../Components/PayzButton';
 
 
 export default function HaveAccount(){
@@ -9,33 +10,25 @@ export default function HaveAccount(){
   
 
 
-const getAccountItems = async ()=>{
-    const getitems = await GetInsertedData();
-    setitems(getitems.items);
-    let accounts = [];
-    getitems.map((item,index)=>{
-        console.log("ITEM" + item.hash)
-        accounts.push(item.hash);
-        setaccounts(accounts);
-    })
+    const getAccountItems = async () => {
+        try {
+          const items = await GetInsertedData();
+          console.log("items:", items);
+          const accounts = items.map((item) => item.hash);
+          console.log("Accounts: ", accounts);
+          setitems(items.accounts);
+          setaccounts(accounts);
+        } catch (error) {
+          console.error(error);
+        }
+      };
 
-}
-
-const ShowAccountButtons = ()=>{
-   {accounts.map((account,index)=>{
-    return(
-        <Pressable key={index}>
-            <Text>{account}</Text>
-        </Pressable>
-    )
-   })}
-}
 
 
 
     useEffect(()=>{
         try{
-            getAccountItems();
+             getAccountItems();
             //await CheckInsertedData();
         }catch(err){
         console.error(err)
@@ -46,9 +39,16 @@ const ShowAccountButtons = ()=>{
         <>
         <View style={styles.container}>
         <View>
-               <Text>Selecciona una de tus cuentas</Text>
+               <Text style={styles.text}>Selecciona una de tus cuentas</Text>
             
-                <Text> Cuenta: {items} </Text>
+                <Text style={styles.text}> Cuenta: {accounts.map((account,index)=>{
+                    return(
+                        <SmallButton label={account}>
+                        <Text key={index}>{account}</Text>
+                        </SmallButton>
+                        
+                    )
+                })} </Text>
             
         </View>
         </View>

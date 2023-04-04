@@ -18,6 +18,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 20,
   },
+  smallbutton: {
+    backgroundColor: '#000000',
+    height: 20,
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 20,
+  },
   label: {
     color: '#ffffff',
     fontSize: 20,
@@ -25,5 +33,14 @@ const styles = StyleSheet.create({
    
   },
 });
+
+export const SmallButton = ({onPress,label})=>{
+  return (
+    <Pressable onPress={onPress} style={styles.smallbutton}>
+      <Text style={styles.label}>{label}</Text>
+    </Pressable>
+  );
+};
+
 
 export default PayzButton;

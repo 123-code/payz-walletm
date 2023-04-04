@@ -42,6 +42,7 @@ export async function CreateSQLiteTable() {
   }
   
   export async function CheckInsertedData() {
+    
     try {
       db.transaction((tx) => {
         tx.executeSql('SELECT * FROM users', [], (tx, results) => {
@@ -50,7 +51,7 @@ export async function CreateSQLiteTable() {
           for (let i = 0; i < rows.length; i++) {
             let { id, hash } = rows.item(i);
 
-            console.log(`User ID: ${id}, Hash: ${hash}`);
+            console.log (`User ID: ${id}, Hash: ${hash}`);
            
           }
         });
@@ -65,27 +66,28 @@ export async function CreateSQLiteTable() {
   }
 
 
-  export async function GetInsertedData() {
-    try {
+  export function GetInsertedData() {
+    return new Promise((resolve, reject) => {
+      const accounts = [];
       db.transaction((tx) => {
-        tx.executeSql('SELECT * FROM users', items=[], (tx, results) => {
+        console.log('Transaction started');
+        tx.executeSql('SELECT * FROM users', [], (tx, results) => {
+          console.log('SQL query executed');
           let rows = results.rows;
           console.log(`Total rows: ${rows.length}`);
           for (let i = 0; i < rows.length; i++) {
             let { id, hash } = rows.item(i);
-            
-            console.log(`User ID: ${id}, Hash: ${hash}`);
-           items.push({hash});
+            console.log(`Extracted ID: ${id}, Hash: ${hash}`);
+            accounts.push({id, hash});
           }
+          console.log('Accounts array populated:', accounts);
+          resolve(accounts);
+        }, (error) => {
+          console.log('SQL query failed', error);
+          reject(error);
         });
-        
       });
-      return items;
-    } catch (err) {
-      console.error(err);
-      return false
-
-    }
+    });
   }
 
   

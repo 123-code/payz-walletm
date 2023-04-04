@@ -40,12 +40,11 @@ export default function HaveAccount(){
         <View style={styles.container}>
         <View>
                <Text style={styles.text}>Selecciona una de tus cuentas</Text>
-            
                 <Text style={styles.text}> Cuenta: {accounts.map((account,index)=>{
-                    return(
-                        <SmallButton label={account}>
-                        <Text key={index}>{account}</Text>
-                        </SmallButton>
+                return(
+                <SmallButton label={account}>
+                <Text key={index}>{account}</Text>
+                </SmallButton>
                         
                     )
                 })} </Text>

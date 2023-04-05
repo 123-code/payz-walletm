@@ -1,7 +1,14 @@
 import React,{useState,useEffect} from 'react';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { Input } from 'native-base';
-import {CreateSQLiteTable,StorePrivateKeyHash,CheckIfTableExists,CheckInsertedData}  from '../util/SQLiteconn'
+
+import {CreateSQLiteTable,
+StorePrivateKeyHash,
+CheckIfTableExists,
+CheckInsertedData,
+StorePublicKey
+}  from '../util/SQLiteconn'
+
 import { useNavigation } from '@react-navigation/native';
 import { GenerateWallet,EncryptValues } from '../util/JavascriptKeyGen';
 import PayzButton from '../Components/PayzButton';

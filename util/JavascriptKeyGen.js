@@ -11,6 +11,6 @@ const chain = 'BTC' // or ETH
 let wallet = await generateWallet(mnemonic, chain);
 wallet = JSON.parse(wallet);
 console.log(JSON.stringify(wallet.address))
-
+//const AccountInfo = {wallet.address,wallet.privateKey}
 return JSON.stringify(wallet.address)
 }

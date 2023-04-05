@@ -6,13 +6,13 @@ import Otp from '../Screens/PhoneInput/OTP';
 import Gated from '../Screens/PhoneInput/Gated';
 import CreatingAccount from '../Screens/Accounts/CreatingAccount';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import AccountSelector from '../Screens/Accounts/HaveAccount'
-
+import AccountSelector from '../Screens/Accounts/HaveAccount';
+import ViewAccount from '../Screens/Accounts/ViewAccount';
 const Stack = createNativeStackNavigator();
 export default function AppStack(){
     return (
 <Stack.Navigator>
-
+<Stack.Screen name="ViewAccount" component={ViewAccount}/>
 <Stack.Screen name="CreatingAccount" component={CreatingAccount}/>
 <Stack.Screen name="Welcome" component={Welcome}/>
 <Stack.Screen name="PhoneNumberInput" component={PhoneNumberInput}/>

@@ -15,6 +15,7 @@
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "@twotalltotems/react-native-otp-input": "1.3.7",
+    "balance-crypto": "^0.2.15",
     "bcrypt-react-native": "^1.1.1",
     "crypto-js": "^4.1.1",
     "ethers": "^6.2.0",

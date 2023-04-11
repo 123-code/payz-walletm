@@ -6,6 +6,9 @@ import {GetWalletBTCBalance} from '../../util/GetWalletBTCBalance';
 
 
 export default function ViewAccount() {
+  useEffect(()=>{
+    GetWalletBTCBalance("1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2")
+  },[])
     return(
         <>
         <View style={styles.container}>

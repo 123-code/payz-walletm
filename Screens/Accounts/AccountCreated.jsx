@@ -10,14 +10,10 @@ export default function AccountCreated() {
        const NewAccount = account[account.length-1]
        console.log("ACCOUNT:",NewAccount)
        SetAccount(NewAccount)
-    }
-  
+    } 
     useEffect(()=>{
         GetAccount()
     },[])
-
-   
- 
 return(
     <>
     <View style={styles.container}>

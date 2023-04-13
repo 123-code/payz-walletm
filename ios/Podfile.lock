@@ -1,4 +1,8 @@
 PODS:
+  - BCrypt (1.0.0)
+  - bcrypt-react-native (1.1.1):
+    - BCrypt
+    - React
   - boost (1.76.0)
   - coingrig-wallet-generator (0.1.7):
     - React-Core
@@ -433,11 +437,14 @@ PODS:
     - React-RCTImage
   - RNSecureRandom (1.0.1):
     - React
-  - RNSVG (13.9.0):
+  - RNSVG (13.4.0):
+    - React-Core
+  - RNVectorIcons (9.2.0):
     - React-Core
   - Yoga (1.14.0)
 
 DEPENDENCIES:
+  - bcrypt-react-native (from `../node_modules/bcrypt-react-native`)
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - "coingrig-wallet-generator (from `../node_modules/@coingrig/wallet-generator`)"
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
@@ -498,14 +505,18 @@ DEPENDENCIES:
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSecureRandom (from `../node_modules/react-native-securerandom`)
   - RNSVG (from `../node_modules/react-native-svg`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
+    - BCrypt
     - fmt
     - libevent
 
 EXTERNAL SOURCES:
+  bcrypt-react-native:
+    :path: "../node_modules/bcrypt-react-native"
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
   coingrig-wallet-generator:
@@ -622,10 +633,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-securerandom"
   RNSVG:
     :path: "../node_modules/react-native-svg"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  BCrypt: 712b656110e5020d319c547e4d8f3053ded82b2a
+  bcrypt-react-native: 399775585257ae6c8717370a1119c7da0113e3bf
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
   coingrig-wallet-generator: 6720d1049ffcd4d2e1fa28b01bb4f8884acb4c26
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
@@ -685,7 +700,8 @@ SPEC CHECKSUMS:
   RNReanimated: cc5e3aa479cb9170bcccf8204291a6950a3be128
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
   RNSecureRandom: 07efbdf2cd99efe13497433668e54acd7df49fef
-  RNSVG: 53c661b76829783cdaf9b7a57258f3d3b4c28315
+  RNSVG: 07dbd870b0dcdecc99b3a202fa37c8ca163caec2
+  RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
   Yoga: 79dd7410de6f8ad73a77c868d3d368843f0c93e0
 
 PODFILE CHECKSUM: 186a1b7e7e6555d1ed9e2f1482bd181db021b923

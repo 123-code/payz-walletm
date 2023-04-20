@@ -8,11 +8,14 @@ import CreatingAccount from '../Screens/Accounts/CreatingAccount';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AccountSelector from '../Screens/Accounts/HaveAccount';
 import ViewAccount from '../Screens/Accounts/ViewAccount';
+import Creating from '../Screens/Accounts/Creating'; 
+import PinAuth from '../Screens/Auth/PinAuth';
 const Stack = createNativeStackNavigator();
 export default function AppStack(){
     return (
 <Stack.Navigator>
-<Stack.Screen name="ViewAccount" component={ViewAccount}/>
+    {/* <Stack.Screen name="ViewAccount" component={ViewAccount}/>*/}
+
 <Stack.Screen name="CreatingAccount" component={CreatingAccount}/>
 <Stack.Screen name="Welcome" component={Welcome}/>
 <Stack.Screen name="PhoneNumberInput" component={PhoneNumberInput}/>
@@ -20,6 +23,9 @@ export default function AppStack(){
 <Stack.Screen name="Gated" component={Gated}/>
 <Stack.Screen name="CreatePIN" component={CreatePIN}/>
 <Stack.Screen name="AccountSelector" component={AccountSelector}/>
+<Stack.Screen name="Creating" component={Creating}/>
+<Stack.Screen name="ViewAccount" component={ViewAccount}/>
+<Stack.Screen name="PinAuth" component={PinAuth}/>
 </Stack.Navigator>
     )
 }

@@ -16,7 +16,7 @@ export default function CreatingAccount() {
   }
 
   const OnNewButtonPress = ()=>{
-    navigation.navigate('CreatingAccount')
+    navigation.navigate('Creating')
   }
 
 
@@ -61,7 +61,7 @@ export default function CreatingAccount() {
  <Text style={styles.text}> Hemos detectado que has creado una cuenta anteriormente</Text>
  </View>
  <View style={styles.container}>
-       <PayzButton label="Crear cuenta nueva"/>
+       <PayzButton label="Crear cuenta nueva" onPress={OnNewButtonPress}/>
 <Text> {"o"} </Text>
        <PayzButton label="Usar cuenta existente" onPress={OnExistingButtonPress}/>
 </View>

@@ -1,13 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NativeBaseProvider,Box } from "native-base";
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider, Layout, Text } from '@ui-kitten/components';
 import AppStack from './Components/StackNavigator.jsx';
 
 
 export default function App() {
   return (
+    <ApplicationProvider {...eva} theme={eva.light}>
     <SafeAreaProvider>
     <NativeBaseProvider>
       <NavigationContainer>
@@ -16,6 +19,7 @@ export default function App() {
       <StatusBar style="auto" />
     </NativeBaseProvider>
     </SafeAreaProvider>
+    </ApplicationProvider>
   );
 }
 

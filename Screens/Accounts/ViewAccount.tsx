@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { ListItem,Avatar,Button } from '@rneui/themed';
 import {GetInsertedData} from '../../util/SQLiteconn';
@@ -12,9 +13,30 @@ export default function ViewAccount() {
   const[BTCBalance,setBTCBalance] = useState(0)
   const[SATBalance,setSATBalance] = useState(0)
   const [Account,SetAccount] = useState([]);
+  const [PublicKey,setPublicKey] = useState(null);
+  const [PrivateKey,setPrivateKey] = useState(null);
+  const navigation = useNavigation();
 
   const BTCImageURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/300px-Bitcoin.svg.png"
   const USDImageURL = "https://img.freepik.com/premium-vector/dollar-icon-american-currency-symbol-banknote_572070-170.jpg?w=1060"
+
+
+  const getAccountItems = async () => {
+    try {
+      const items = await GetInsertedData();
+      console.log("items:", items);
+      const accounts = items.map((item) => item.hash);
+      console.log("Accounts: ", accounts);
+      // TODO this is extremely insecure, PrivateK is unencrypted, 
+      // ask for PIN to unencrypt and use it for Tx's
+      setPrivateKey(accounts[accounts.length-1]);
+      console.log("PK",PrivateKey)
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
 
 const AccountGetter = async()=>{
   const account =  await GetInsertedData();
@@ -25,6 +47,10 @@ const AccountGetter = async()=>{
   SetAccount(MYAccount)
   console.log("dwidiwrf",Account)
 }
+
+useEffect(() => {
+  getAccountItems();
+})
 
   useEffect(()=>{
     AccountGetter()
@@ -89,6 +115,26 @@ const AccountGetter = async()=>{
               }}
               titleStyle={{ fontWeight: 'bold' }}
             />
+
+<Text style={styles.text}> Transfiere a tus amigos </Text>
+<Button
+  title="->"
+  buttonStyle={{
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'black',
+    borderWidth: 2,
+    borderColor: 'white',
+    borderRadius: 30,
+  }}
+  containerStyle={{
+    width: 100,
+    marginHorizontal: 120,
+    marginVertical: 10,
+  }}
+  titleStyle={{ fontWeight: 'bold' }}
+  onPress={() => navigation.navigate("PinAuth")}
+/>
 
 
         </View>

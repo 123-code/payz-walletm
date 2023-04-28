@@ -10,22 +10,25 @@ import AccountSelector from '../Screens/Accounts/HaveAccount';
 import ViewAccount from '../Screens/Accounts/ViewAccount';
 import Creating from '../Screens/Accounts/Creating'; 
 import PinAuth from '../Screens/Auth/PinAuth';
+import AccountName from '../Screens/Accounts/AccountName';
 const Stack = createNativeStackNavigator();
 export default function AppStack(){
     return (
 <Stack.Navigator>
     {/* <Stack.Screen name="ViewAccount" component={ViewAccount}/>*/}
-
+<Stack.Screen name="AccountName" component={AccountName}/>
 <Stack.Screen name="CreatingAccount" component={CreatingAccount}/>
 <Stack.Screen name="Welcome" component={Welcome}/>
 <Stack.Screen name="PhoneNumberInput" component={PhoneNumberInput}/>
 <Stack.Screen name="Otp" component={Otp}/>
 <Stack.Screen name="Gated" component={Gated}/>
 <Stack.Screen name="CreatePIN" component={CreatePIN}/>
+
 <Stack.Screen name="AccountSelector" component={AccountSelector}/>
 <Stack.Screen name="Creating" component={Creating}/>
 <Stack.Screen name="ViewAccount" component={ViewAccount}/>
 <Stack.Screen name="PinAuth" component={PinAuth}/>
+
 </Stack.Navigator>
     )
 }

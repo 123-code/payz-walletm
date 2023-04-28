@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 20,
+    marginBottom: 100, 
   },
   smallbutton: {
     backgroundColor: '#000000',

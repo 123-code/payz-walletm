@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     width: 60,
     textAlign: 'center',
     fontSize: 30,
+    borderRadius: 20,
   },
   title: {
     fontSize: 40,

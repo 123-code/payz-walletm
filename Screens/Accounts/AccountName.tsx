@@ -2,14 +2,28 @@ import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, Pressable, Text } from 'react-native';
 import { Input } from 'native-base';
 import PayzButton from '../../Components/PayzButton';
+import { StoreAccountName } from '../../util/StoreAccountDetails'
 
 export default function AccountName() {
   const [AccountName, setAccountName] = useState('');
 
-  const HandleInputChange = (ename, evalue) => {
-    setAccountName(evalue);
-  };
+  const StoreMyName = async (name:any)=>{
+    try{
+      await StoreAccountName(name)
+    }catch(err){
+      console.error(err)
+    }
+   
+  }
 
+  const handleNameChange = (text:any) => {
+    setAccountName(text);
+  };
+  //procedimiento de gestion de activos automatizado 
+  // clasificacion
+  //categorizacion 
+  //valoracion 
+  //inventario
   return (
     <>
         <View style={styles.container}>
@@ -18,7 +32,7 @@ export default function AccountName() {
   
       <View style={styles.container}>
       
-        <TextInput style={styles.input} placeholder="nombre" />
+        <TextInput   onChangeText={StoreMyName} style={styles.input} placeholder="nombre" />
       </View>
       <PayzButton onPress={console.log("o")} label="Listo"/>
    

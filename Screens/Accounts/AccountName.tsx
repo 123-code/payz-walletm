@@ -32,9 +32,9 @@ export default function AccountName() {
   
       <View style={styles.container}>
       
-        <TextInput   onChangeText={StoreMyName} style={styles.input} placeholder="nombre" />
+        <TextInput onChangeText={handleNameChange} style={styles.input} placeholder="nombre" />
       </View>
-      <PayzButton onPress={console.log("o")} label="Listo"/>
+      <PayzButton onPress={StoreMyName} label="Listo"/>
    
     </>
   );

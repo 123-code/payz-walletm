@@ -8,6 +8,7 @@ CheckIfTableExists,
 CheckInsertedData,
 StorePublicKey
 }  from '../util/SQLiteconn'
+import {StorePinHash} from '../util/StorePINHash';
 
 import { useNavigation } from '@react-navigation/native';
 import { GenerateWallet,EncryptValues } from '../util/JavascriptKeyGen';

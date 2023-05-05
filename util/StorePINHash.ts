@@ -4,12 +4,8 @@ import * as SQLite from 'expo-sqlite';
 export const db = SQLite.openDatabase('pindatabase.db');
 
 
-    export async function StorePinHash(pin: string) {
-    function EncryptPIN(){
-        const salt = bcrypt.genSaltSync(10);
-        const hash = bcrypt.hashSync(pin, salt);
-        return hash
-    }
+export async function StorePinHash(pin: string) {
+   
     try{
         const pinhash = EncryptPIN();
         db.transaction(async(tx)=>{
@@ -23,5 +19,12 @@ export const db = SQLite.openDatabase('pindatabase.db');
         });
     }catch(err){
         console.error(err)
+    }
+    function EncryptPIN(){
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(pin, salt);
+        console.log("HASH:", hash)
+        return hash
+
     }
     }

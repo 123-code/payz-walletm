@@ -17,6 +17,7 @@ export function CompareHashes (inputted:string):Promise<string> {
                         for(let i=0;i<rows.length;i++){
                             hashes.push(rows.item(i).pinhash)
                         }
+                        console.log("HASHES:",hashes)
                     }
 
                     
@@ -26,7 +27,7 @@ export function CompareHashes (inputted:string):Promise<string> {
             });
             
         }
-        const equals = bcrypt.compareSync(inputted, hash)
+        //const equals = bcrypt.compareSync(inputted, hash)
     })
   
     }

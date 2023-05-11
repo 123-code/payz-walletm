@@ -18,7 +18,7 @@ const Welcome = () => {
 <Stack>
   
 </Stack>
-            <Pressable
+<Pressable
   style={({ pressed }) => [
     {
       backgroundColor: pressed ? '#add8e6' : '#87cefa',
@@ -32,6 +32,9 @@ const Welcome = () => {
   }}>
   <Text style={styles.buttontext}> SMS </Text>
 </Pressable>
+
+
+
 
 
             </View>

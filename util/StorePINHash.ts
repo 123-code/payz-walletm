@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt"
+/*import bcrypt from "bcrypt"
 import * as SQLite from 'expo-sqlite';
 
 export const db = SQLite.openDatabase('pindatabase.db');
@@ -28,3 +28,4 @@ export async function StorePinHash(pin: string) {
 
     }
     }
+    */

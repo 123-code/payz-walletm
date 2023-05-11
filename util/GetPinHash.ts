@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt"
+/*import bcrypt from "bcryptjs";
 import * as SQLite from 'expo-sqlite';
 
 
@@ -31,3 +31,4 @@ export function CompareHashes (inputted:string):Promise<string> {
     })
   
     }
+*/

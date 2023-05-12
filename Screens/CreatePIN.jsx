@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { Input } from 'native-base';
-
+import { encryptPassword } from '../util/EncryptKeyPin';
 import {CreateSQLiteTable,
 StorePrivateKeyHash,
 CheckIfTableExists,
@@ -49,14 +49,16 @@ const GenerateBitcoinKeys = ()=>{
 
 
 
-const HandleSubmit = async () => {
+
+
+const HandleSubmit = async ({pin}) => {
   navigation.navigate('CreatingAccount')
   try{
     await CreateSQLiteTable();
     const tableExists = await CheckIfTableExists();
     console.log(`Table created: ${tableExists}`);
     const private_key = await GenerateBitcoinKeys();
-    //const encrypted = EncryptValues(private_key,numbers);
+    encryptPassword(pin);
     await StorePrivateKeyHash(private_key);
     const created = await CheckInsertedData();
     console.log(`Account created: ${created}`);
@@ -64,10 +66,6 @@ const HandleSubmit = async () => {
     console.error(err);
   }
 };
-
-
-
-
 
   return (
     <>

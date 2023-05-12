@@ -2,20 +2,10 @@ import React,{useState,useEffect} from 'react';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { Input } from 'native-base';
 
-import {CreateSQLiteTable,
-StorePrivateKeyHash,
-CheckIfTableExists,
-CheckInsertedData,
-StorePublicKey
-}  from '../util/SQLiteconn'
-import {StorePinHash} from '../util/StorePINHash';
-
+import {encryptPassword} from '../util/GetPinHash';
 import { useNavigation } from '@react-navigation/native';
-import { GenerateWallet,EncryptValues } from '../util/JavascriptKeyGen';
 import PayzButton from '../Components/PayzButton';
-//import { EncryptValues } from '../util/EncryptKeyPin';
 
-//StorePrivateKeyHash
 export default function HasAccountWelcome() {
   const navigation = useNavigation();
   const [numbers, setNumbers] = useState({
@@ -33,9 +23,11 @@ const HandleInputChange = (ename,evalue)=>{
 }
 
 const HandleSubmit = async () => {
-  navigation.navigate('ViewAccount')
+
   try{
-    console.log("...")
+  encryptPassword(numbers.Number1, numbers.Number2, numbers.Number3, numbers.Number4);
+  navigation.navigate('ViewAccount')
+ 
   }catch(err){
     console.error(err);
   }
@@ -68,6 +60,7 @@ const styles = StyleSheet.create({
     paddingVertical: 50,
   },
   inputContainer: {
+    marginVertical: 40,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -87,6 +80,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingHorizontal: 30,
   }, button: {
+   
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,

@@ -1,34 +1,9 @@
-/*import bcrypt from "bcryptjs";
-import * as SQLite from 'expo-sqlite';
+import bcrypt from 'bcryptjs';
 
-
-export const db = SQLite.openDatabase('pindatabase.db');
-
-export function CompareHashes (inputted:string):Promise<string> {
-    return new Promise<string> ((resolve,reject)=>{
-        const GetInsertedHash = async()=>{
-     // TODO Check code below
-            db.transaction(async(tx)=>{
-                const query = tx.executeSql(
-                    'SELECT * FROM pin',[],
-                    (tx,results)=>{
-                        const hashes = [];
-                        const rows = results.rows;
-                        for(let i=0;i<rows.length;i++){
-                            hashes.push(rows.item(i).pinhash)
-                        }
-                        console.log("HASHES:",hashes)
-                    }
-
-                    
-                );
-            
-                
-            });
-            
-        }
-        //const equals = bcrypt.compareSync(inputted, hash)
-    })
-  
-    }
-*/
+export const encryptPassword = async (num1:number,num2:number,num3:number,num4:number): Promise<string> => {
+  const saltRounds = 10; // Number of salt rounds for encryption
+  const salt = await bcrypt.genSalt(saltRounds);
+  const encryptedPassword = await bcrypt.hash(num1,num2,num3,num4, salt);
+  console.log("ENCRYPTED PIN:", encryptedPassword)
+  return encryptedPassword;
+};

@@ -13,6 +13,7 @@ import Creating from '../Screens/Accounts/Creating';
 import PinAuth from '../Screens/Auth/PinAuth';
 import AccountName from '../Screens/Accounts/AccountName';
 import HasAccountWelcome from '../Screens/HasAccountWelcome';
+import WelcomeName from '../Screens/WelcomeName';
 const Stack = createNativeStackNavigator();
 
 export default function AppStack(){
@@ -50,6 +51,7 @@ export default function AppStack(){
 <Stack.Screen name="Creating" component={Creating}/>
 <Stack.Screen name="ViewAccount" component={ViewAccount}/>
 <Stack.Screen name="PinAuth" component={PinAuth}/>
+<Stack.Screen name="WelcomeName" component={WelcomeName}/>
 
 </Stack.Navigator>
     )

@@ -6,49 +6,17 @@ import {encryptPassword} from '../util/GetPinHash';
 import { useNavigation } from '@react-navigation/native';
 import PayzButton from '../Components/PayzButton';
 
-export default function HasAccountWelcome() {
+export default function WelcomeName() {
   const navigation = useNavigation();
-  const [numbers, setNumbers] = useState({
-    Number1: 0,
-    Number2: 0,
-    Number3: 0,
-    Number4: 0,
-  });
 
-const HandleInputChange = (ename,evalue)=>{
-  setNumbers({
-    ...numbers,
-    [ename]:evalue
-  })
-}
 
-const HandleSubmit = async () => {
-
-  try{
-  encryptPassword(numbers);
-  navigation.navigate('WelcomeName')
- 
-  }catch(err){
-    console.error(err);
-  }
-};
 
   return (
     <>
       <View style={styles.container}>
       <Text style={styles.title}>Ingresa tu PIN</Text>
-      <Text style={styles.message}>
-       {`Ingresa tu PIN para acceder a tu cuenta`}
-     </Text>
       </View>
-
-      <View style={styles.inputContainer}>
-        <Input mx={1}  w="20%"  style={styles.input} onChangeText={(text)=>HandleInputChange('Number1',text)} />
-        <Input mx={1}  w="20%"  style={styles.input} onChangeText={(text)=>HandleInputChange('Number2',text)} />
-        <Input mx={1}  w="20%"  style={styles.input} onChangeText={(text)=>HandleInputChange('Number3',text)} />
-        <Input mx={1}  w="20%" style={styles.input} onChangeText={(text)=>HandleInputChange('Number4',text)} />
-      </View>
-      <PayzButton label="Listo" onPress={HandleSubmit}/>
+    
     </>
   );
 }

@@ -32,6 +32,7 @@
     "expo-splash-screen": "~0.18.1",
     "expo-sqlite": "~11.1.1",
     "expo-status-bar": "~1.4.4",
+    "js-base64": "^3.7.5",
     "keypair": "^1.0.4",
     "native-base": "^3.4.28",
     "react": "18.2.0",
@@ -62,6 +63,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@types/bcryptjs": "^2.4.2",
     "@types/react": "^18.2.0",
     "@types/react-native": "^0.71.6",
     "@types/react-navigation": "^3.4.0",

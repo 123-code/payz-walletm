@@ -1,9 +1,12 @@
-import bcrypt from 'bcryptjs';
+import { Base64 } from 'js-base64';
 
-export const encryptPassword = async (num1:number,num2:number,num3:number,num4:number): Promise<string> => {
-  const saltRounds = 10; // Number of salt rounds for encryption
-  const salt = await bcrypt.genSalt(saltRounds);
-  const encryptedPassword = await bcrypt.hash(num1,num2,num3,num4, salt);
-  console.log("ENCRYPTED PIN:", encryptedPassword)
-  return encryptedPassword;
+export const encryptPassword = async (numbers:any)=>{
+  try{
+    const encode = Base64.encode(JSON.stringify(numbers));
+    console.log("ENCODED:",encode); 
+    const decode = Base64.decode(encode);
+    console.log(decode); 
+  }catch(err){
+    console.log(err);
+  }
 };

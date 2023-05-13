@@ -20,7 +20,6 @@ export async function CreateSQLiteTable() {
     
   }
 
-
   export async function CheckIfTableExists() {
     try {
       const result = await new Promise((resolve, reject) => {

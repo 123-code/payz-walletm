@@ -52,7 +52,6 @@ export default function AppStack(){
 <Stack.Screen name="ViewAccount" component={ViewAccount}/>
 <Stack.Screen name="PinAuth" component={PinAuth}/>
 <Stack.Screen name="WelcomeName" component={WelcomeName}/>
-
 </Stack.Navigator>
     )
 }

@@ -1,10 +1,13 @@
 import React,{useState,useEffect} from 'react';
+import { Base64 } from 'js-base64';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { Input } from 'native-base';
-
 import {encryptPassword} from '../util/GetPinHash';
 import { useNavigation } from '@react-navigation/native';
 import PayzButton from '../Components/PayzButton';
+import { SaveEncryptedPIN } from '../util/GetPinHash';
+import { GetPinHash } from '../util/ReceiveHash';
+
 
 export default function HasAccountWelcome() {
   const navigation = useNavigation();
@@ -15,18 +18,33 @@ export default function HasAccountWelcome() {
     Number4: 0,
   });
 
-const HandleInputChange = (ename,evalue)=>{
+const HandleInputChange = (ename: string,evalue: string)=>{
   setNumbers({
     ...numbers,
     [ename]:evalue
   })
 }
 
+
+const Authenticate = async ()=>{
+  const DBHash = await GetPinHash(numbers);
+  const encoded = Base64.encode(JSON.stringify(numbers));
+  if(DBHash === encoded){
+    navigation.navigate('ViewAccount')
+  }
+  else{
+    alert('PIN Incorrecto')
+    console.log('Not Authenticated')
+  }
+
+}
+
 const HandleSubmit = async () => {
 
   try{
   encryptPassword(numbers);
-  navigation.navigate('WelcomeName')
+  SaveEncryptedPIN(numbers);
+  navigation.navigate('ViewAccount')
  
   }catch(err){
     console.error(err);

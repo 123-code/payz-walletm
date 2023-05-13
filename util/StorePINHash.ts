@@ -1,13 +1,10 @@
-/*import bcrypt from "bcrypt"
+
 import * as SQLite from 'expo-sqlite';
 
 export const db = SQLite.openDatabase('pindatabase.db');
 
-
-export async function StorePinHash(pin: string) {
-   
+export async function StorePinHash(pinhash: string) {
     try{
-        const pinhash = EncryptPIN();
         db.transaction(async(tx)=>{
             tx.executeSql(
                 'CREATE TABLE IF NOT EXISTS pin (id INTEGER PRIMARY KEY AUTOINCREMENT, pinhash TEXT)'
@@ -20,12 +17,4 @@ export async function StorePinHash(pin: string) {
     }catch(err){
         console.error(err)
     }
-    function EncryptPIN(){
-        const salt = bcrypt.genSaltSync(10);
-        const hash = bcrypt.hashSync(pin, salt);
-        console.log("HASH:", hash)
-        return hash
-
     }
-    }
-    */

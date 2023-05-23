@@ -30,7 +30,7 @@ const Authenticate = async ()=>{
   const DBHash = await GetPinHash(numbers);
   const encoded = Base64.encode(JSON.stringify(numbers));
   if(DBHash === encoded){
-    navigation.navigate('ViewAccount')
+    navigation.navigate('WelcomeBack')
   }
   else{
     alert('PIN Incorrecto')
@@ -44,7 +44,8 @@ const HandleSubmit = async () => {
   try{
   encryptPassword(numbers);
   SaveEncryptedPIN(numbers);
-  navigation.navigate('ViewAccount')
+  Authenticate();
+
  
   }catch(err){
     console.error(err);
@@ -65,8 +66,10 @@ const HandleSubmit = async () => {
         <Input mx={1}  w="20%"  style={styles.input} onChangeText={(text)=>HandleInputChange('Number2',text)} />
         <Input mx={1}  w="20%"  style={styles.input} onChangeText={(text)=>HandleInputChange('Number3',text)} />
         <Input mx={1}  w="20%" style={styles.input} onChangeText={(text)=>HandleInputChange('Number4',text)} />
+        
       </View>
       <PayzButton label="Listo" onPress={HandleSubmit}/>
+ 
     </>
   );
 }

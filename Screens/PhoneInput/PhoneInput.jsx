@@ -21,7 +21,7 @@ import {
        <View style={styles.container}>
        <SafeAreaView style={styles.wrapper}>
          <View style={styles.welcome}>
-           <Text>Numero Celular </Text>
+           <Text style={styles.text}>Número Celular </Text>
          </View>
          <PhoneInput
            ref={phoneInput}
@@ -89,6 +89,9 @@ const styles = StyleSheet.create({
    fontSize: 14,
     fontWeight: "bold",
     fontFamily: "Futura",
+ },
+ text:{
+  fontFamily: "Futura"
  },
 
  welcome: {

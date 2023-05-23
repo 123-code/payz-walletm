@@ -18,6 +18,7 @@ export const encryptPassword = async (numbers:any)=>{
 export const SaveEncryptedPIN = async (numbers:any)=>{
   try{
     const encoded = Base64.encode(JSON.stringify(numbers));
+    console.log("ENCODED:",encoded); 
     await StorePinHash(encoded);
   }catch(err){
     console.error(err);

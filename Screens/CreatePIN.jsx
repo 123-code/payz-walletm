@@ -8,11 +8,10 @@ CheckIfTableExists,
 CheckInsertedData,
 StorePublicKey
 }  from '../util/SQLiteconn'
-import {StorePinHash} from '../util/StorePINHash';
-
 import { useNavigation } from '@react-navigation/native';
 import { GenerateWallet,EncryptValues } from '../util/JavascriptKeyGen';
 import PayzButton from '../Components/PayzButton';
+import { SaveEncryptedPIN } from '../util/GetPinHash';
 //import { EncryptValues } from '../util/EncryptKeyPin';
 
 //StorePrivateKeyHash
@@ -46,19 +45,14 @@ const GenerateBitcoinKeys = ()=>{
   }
 }
 
-
-
-
-
-
-const HandleSubmit = async ({pin}) => {
+const HandleSubmit = async () => {
   navigation.navigate('CreatingAccount')
   try{
     await CreateSQLiteTable();
     const tableExists = await CheckIfTableExists();
     console.log(`Table created: ${tableExists}`);
     const private_key = await GenerateBitcoinKeys();
-    encryptPassword(pin);
+    SaveEncryptedPIN(numbers)
     await StorePrivateKeyHash(private_key);
     const created = await CheckInsertedData();
     console.log(`Account created: ${created}`);

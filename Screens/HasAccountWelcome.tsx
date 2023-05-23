@@ -28,6 +28,7 @@ const HandleInputChange = (ename: string,evalue: string)=>{
 
 const Authenticate = async ()=>{
   const DBHash = await GetPinHash(numbers);
+  console.log(numbers)
   const encoded = Base64.encode(JSON.stringify(numbers));
   if(DBHash === encoded){
     navigation.navigate('WelcomeBack')

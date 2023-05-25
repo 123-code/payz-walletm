@@ -25,20 +25,29 @@ const HandleInputChange = (ename: string,evalue: string)=>{
   })
 }
 
+useEffect(()=>{
+
+},[])
 
 const Authenticate = async () => {
-  const DBHash = await GetPinHash(numbers);
-  console.log(numbers);
+  const Inputpin = Object.values(numbers).join('');
+  const DBHash = await GetPinHash();
+  console.log("DBHash",DBHash);
+ const decoded = JSON.parse(Base64.decode(DBHash));
+  console.log("decoded",decoded);
+  console.log("NUMBERS",numbers)
   let encoded = Base64.encode(JSON.stringify(numbers));
-  console.log(encoded);
+  console.log("NUMBERSE",encoded);
 
-  if (DBHash.localeCompare(encoded) === 0) {
+
+  if (DBHash === encoded) {
     navigation.navigate('WelcomeBack');
   } else {
     alert('PIN Incorrecto');
     console.log('Not Authenticated');
   }
-}; 
+};
+
 
 const HandleSubmit = async () => {
 

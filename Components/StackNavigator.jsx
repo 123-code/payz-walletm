@@ -43,6 +43,7 @@ export default function AppStack(){
 <Stack.Navigator>
     
 {/*ShowSignUp ? <Stack.Screen name="Welcome" component={Welcome}/> : <Stack.Screen name="HasAccountWelcome" component={HasAccountWelcome}/>*/}
+
 <Stack.Screen name="HasAccountWelcome" component={HasAccountWelcome}/>
 <Stack.Screen name="WelcomeBack" component={WelcomeBack}/>
 <Stack.Screen name="CreatePIN" component={CreatePIN}/>

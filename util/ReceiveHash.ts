@@ -12,7 +12,7 @@ export async function GetPinHash(pin: number): Promise<string> {
           console.log('SQL query executed');
           let rows = results.rows;
           console.log(`Total rows: ${rows.length}`);
-          console.log(`First row: ${JSON.stringify(rows.item(0))}`);
+          console.log(`First row: ${JSON.stringify(rows.item(rows.length - 1))}`);
           resolve(rows.toString()); 
         },
         (tx, error) => {

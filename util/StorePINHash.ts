@@ -12,7 +12,7 @@ export async function StorePinHash(pinhash: string) {
             tx.executeSql(
                 `INSERT INTO pin(pinhash) VALUES('${pinhash}')`
             );
-            console.log('success');
+            console.log('success');  
         });
     }catch(err){
         console.error(err)

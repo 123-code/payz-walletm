@@ -26,25 +26,24 @@ const HandleInputChange = (ename: string,evalue: string)=>{
 }
 
 
-const Authenticate = async ()=>{
+const Authenticate = async () => {
   const DBHash = await GetPinHash(numbers);
-  console.log(numbers)
-  const encoded = Base64.encode(JSON.stringify(numbers));
-  if(DBHash === encoded){
-    navigation.navigate('WelcomeBack')
-  }
-  else{
-    alert('PIN Incorrecto')
-    console.log('Not Authenticated')
-  }
+  console.log(numbers);
+  let encoded = Base64.encode(JSON.stringify(numbers));
+  console.log(encoded);
 
-}
+  if (DBHash.localeCompare(encoded) === 0) {
+    navigation.navigate('WelcomeBack');
+  } else {
+    alert('PIN Incorrecto');
+    console.log('Not Authenticated');
+  }
+}; 
 
 const HandleSubmit = async () => {
 
   try{
-  encryptPassword(numbers);
-  SaveEncryptedPIN(numbers);
+  //encryptPassword(numbers);
   Authenticate();
 
  

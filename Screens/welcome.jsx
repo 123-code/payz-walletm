@@ -19,7 +19,7 @@ const Welcome = () => {
   
 </Stack>
 <Pressable
-  style={({ pressed }) => [
+  style={({ pressed }) => [ 
     {
       backgroundColor: pressed ? '#add8e6' : '#87cefa',
       borderRadius: 10,

@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet,Pressable } from 'react-native';
+import { View, StyleSheet,Pressable,Image,TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Stack, Button } from "@react-native-material/core";
+import { Text, Stack } from "@react-native-material/core";
 import "@ethersproject/shims"
 //pagomedios
 const Welcome = () => {
@@ -9,30 +9,38 @@ const Welcome = () => {
     return(
         <>
          <View style={styles.container} >
-            <Text style={styles.title}> Bienvenido a Payz</Text>
-            <Text style={styles.text}> verifica tu número celular para empezar  </Text>
+            <Text  variant="h1" style={styles.title}> Bienvenido a Payz</Text>
+            <Text> </Text>
+            <Text variant="h1" style={styles.text}> verifica tu número celular para ingresar  </Text>
             </View>
-
             <View style={ styles.btncontainer}> 
 <Text style={styles.text}> Ingresa con </Text>
-<Stack>
+<Text>
   
-</Stack>
-<Pressable
-  style={({ pressed }) => [ 
-    {
-      backgroundColor: pressed ? '#add8e6' : '#87cefa',
-      borderRadius: 10,
-      padding: 10,
-    },
-    styles.Pressable,
-  ]}
+</Text>
+<Pressable  
+  style={styles.Pressable}
+
+
   onPress={() => {
     navigation.navigate('PhoneNumberInput');
   }}>
   <Text style={styles.buttontext}> SMS </Text>
 </Pressable>
 
+<Text>
+  
+</Text>
+
+<TouchableOpacity style={styles.buttonContainer}>
+      <Image
+        style={styles.googleLogo}
+        source={{
+          uri: 'https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/image8-2.jpg?width=1190&height=800&name=image8-2.jpg',
+        }}
+      />
+      <Text style={styles.buttonText}>Ingresa con Google</Text>
+    </TouchableOpacity>
 
 
 
@@ -90,8 +98,30 @@ const styles = StyleSheet.create({
     },
     Pressable:{
         backgroundColor: 'black',
-     
-
-    }
+        borderRadius: 8,
+      paddingVertical: 10,
+      paddingHorizontal: 15,
+      elevation: 2,
     
+
+    }, buttonContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#ffffff',
+      borderRadius: 8,
+      paddingVertical: 10,
+      paddingHorizontal: 15,
+      elevation: 2,
+    },
+    googleLogo: {
+      width: 24,
+      height: 24,
+      marginRight: 10,
+    },
+    buttonText: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: '#000000',
+    },
 })

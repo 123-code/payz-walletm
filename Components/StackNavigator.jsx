@@ -14,6 +14,7 @@ import PinAuth from '../Screens/Auth/PinAuth';
 import AccountName from '../Screens/Accounts/AccountName';
 import HasAccountWelcome from '../Screens/HasAccountWelcome';
 import WelcomeBack from '../Screens/WelcomeBack';
+import Select from '../Screens/Select';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,8 @@ export default function AppStack(){
 <Stack.Navigator>
     
 {/*ShowSignUp ? <Stack.Screen name="Welcome" component={Welcome}/> : <Stack.Screen name="HasAccountWelcome" component={HasAccountWelcome}/>*/}
+<Stack.Screen name="Select" component={Select}/>
+<Stack.Screen name="Welcome" component={Welcome}/>
 
 <Stack.Screen name="HasAccountWelcome" component={HasAccountWelcome}/>
 <Stack.Screen name="WelcomeBack" component={WelcomeBack}/>
@@ -61,3 +64,4 @@ export default function AppStack(){
 </Stack.Navigator>
     )
 }
+ 

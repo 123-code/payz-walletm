@@ -6,36 +6,23 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {GetInsertedData} from '../../util/SQLiteconn';
 import {GetWalletBTCBalance} from '../../util/GetWalletBTCBalance';
 import WalletBalance from '../../Components/WalletBalance';
+import { ethers } from 'ethers';
 
-//"PrivateKey"
 
 export default function ViewAccount() {
   const[USDBalance,setUSDBalance] = useState(0)
   const[BTCBalance,setBTCBalance] = useState(0)
   const[SATBalance,setSATBalance] = useState(0)
   const [Account,SetAccount] = useState([]);
+  const [ETHAccount,setETHAccount] = useState("");
   const [PublicKey,setPublicKey] = useState(null);
-  const [PrivateKey,setPrivateKey] = useState(null);
+  const [PrivateKey,setPrivateKey] = useState("");
   const navigation = useNavigation();
 
   const BTCImageURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/300px-Bitcoin.svg.png"
   const USDImageURL = "https://img.freepik.com/premium-vector/dollar-icon-american-currency-symbol-banknote_572070-170.jpg?w=1060"
 
-
-  const getAccountItems = async () => {
-    try {
-      const items = await GetInsertedData();
-      console.log("items:", items);
-      const accounts = items.map((item) => item.hash);
-      console.log("Accounts: ", accounts);
-      // TODO this is extremely insecure, PrivateK is unencrypted, 
-      // ask for PIN to unencrypt and use it for Tx's
-      setPrivateKey(accounts[accounts.length-1]);
-      console.log("PK",PrivateKey)
-    } catch (error) {
-      console.error(error);
-    }
-  };
+const GOERLIRPC = "https://goerli.infura.io/v3/c24c8ebb1b7c447aa3e95e28e11e6532"
 
 
   const retrieveData = async (key) => {
@@ -43,6 +30,7 @@ export default function ViewAccount() {
       const value = await AsyncStorage.getItem(key);
       if (value !== null) {
         console.log('Data retrieved successfully:', value);
+        setETHAccount(value)
       } else {
         console.log('Data not found');
       }
@@ -50,6 +38,15 @@ export default function ViewAccount() {
       console.error('Error retrieving data:', error);
     }
   };
+
+
+  const GetMyAccount = async()=>{
+    const provider = new ethers.providers.JsonRpcProvider(GOERLIRPC);
+    const wallet = new ethers.Wallet(PrivateKey, provider);
+    const address = wallet.address;
+    //setPublicKey(address)
+    console.log("address",address)
+  }
 
 
 
@@ -65,9 +62,12 @@ const AccountGetter = async()=>{
 
 useEffect(() => {
   retrieveData("PrivateKey");
+  GetMyAccount();
 })
 
   useEffect(()=>{
+
+
     AccountGetter()
       async function GetWalletValues(account){
       const testbalanceURL = "https://blockstream.info/api/address/"

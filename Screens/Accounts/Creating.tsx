@@ -37,24 +37,12 @@ const CreateScreen = () => {
     useEffect(() => {
         getAccountItems();
     })
+return(
+  <>
+  
+  </>
+)
 
-  if (isLoading) {
-    return (
-      <View>
-        <Layout>
-        <Spinner size='giant' />
-        </Layout>
-        <Text style={styles.text}>Creating...</Text>
-      </View>
-    );
-  }
-
-  return (
-    <View style={styles.container}> 
-     <Text style={styles.text}>Listo, tu cuenta ya fue creada! </Text>
-      <PayzButton onPress={()=>{navigation.navigate("ViewAccount")}} label="continuar"/>
-    </View>
-  );
 };
 
 export default CreateScreen;

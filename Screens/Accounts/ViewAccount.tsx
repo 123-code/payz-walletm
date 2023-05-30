@@ -2,11 +2,12 @@ import React,{useState,useEffect} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { ListItem,Avatar,Button } from '@rneui/themed';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {GetInsertedData} from '../../util/SQLiteconn';
 import {GetWalletBTCBalance} from '../../util/GetWalletBTCBalance';
 import WalletBalance from '../../Components/WalletBalance';
 
-
+//"PrivateKey"
 
 export default function ViewAccount() {
   const[USDBalance,setUSDBalance] = useState(0)
@@ -37,6 +38,20 @@ export default function ViewAccount() {
   };
 
 
+  const retrieveData = async (key) => {
+    try {
+      const value = await AsyncStorage.getItem(key);
+      if (value !== null) {
+        console.log('Data retrieved successfully:', value);
+      } else {
+        console.log('Data not found');
+      }
+    } catch (error) {
+      console.error('Error retrieving data:', error);
+    }
+  };
+
+
 
 const AccountGetter = async()=>{
   const account =  await GetInsertedData();
@@ -49,7 +64,7 @@ const AccountGetter = async()=>{
 }
 
 useEffect(() => {
-  getAccountItems();
+  retrieveData("PrivateKey");
 })
 
   useEffect(()=>{

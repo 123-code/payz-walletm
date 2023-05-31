@@ -41,13 +41,27 @@ const GOERLIRPC = "https://goerli.infura.io/v3/c24c8ebb1b7c447aa3e95e28e11e6532"
 
 
   const GetMyAccount = async()=>{
-    const provider = new ethers.providers.JsonRpcProvider(GOERLIRPC);
-    const wallet = new ethers.Wallet(PrivateKey, provider);
-    const address = wallet.address;
-    //setPublicKey(address)
-    console.log("address",address)
+    try{
+      const provider = new ethers.providers.JsonRpcProvider(GOERLIRPC);
+      const wallet = new ethers.Wallet(ETHAccount);
+      const address = wallet.address;
+      console.log("Provider",address)
+    }catch(err){console.error(err)
+      console.log("ProviderError")}
   }
 
+
+
+const GetAccountBalance = async()=>{
+  try{
+    const provider = new ethers.providers.JsonRpcProvider(GOERLIRPC);
+    const wallet = new ethers.Wallet(ETHAccount);
+    const address = wallet.address;
+    const balance = await provider.getBalance('0x390be0D2Da9eDC0F85Ff09bfBFC874Bc8Ab665A6');
+    console.log("Balance",ethers.utils.formatEther(balance))
+  }catch(err){console.error(err)
+    console.log("BalanceError")}
+}
 
 
 const AccountGetter = async()=>{
@@ -63,6 +77,7 @@ const AccountGetter = async()=>{
 useEffect(() => {
   retrieveData("PrivateKey");
   GetMyAccount();
+  GetAccountBalance();
 })
 
   useEffect(()=>{

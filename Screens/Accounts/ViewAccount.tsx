@@ -93,7 +93,7 @@ useEffect(() => {
         color={lightColors.primary}
         title="Balance"
         price={ETHBalance}
-        info={['$ Balance:  User','ETH Balance:']}
+        info={[`$ Balance: 0,ETH Balance:${ETHBalance.toFixed(3)}`]}
         button={{ title: ' Añadir más', icon: 'add-circle' }}
       />
     

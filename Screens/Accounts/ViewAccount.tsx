@@ -8,6 +8,7 @@ import {GetWalletBTCBalance} from '../../util/GetWalletBTCBalance';
 import WalletBalance from '../../Components/WalletBalance';
 import PayzButton from '../../Components/PayzButton';
 import { ethers } from 'ethers';
+import { ERC20ABI } from '../../ABIs/ERC20'
 
 
 export default function ViewAccount() {
@@ -16,11 +17,12 @@ export default function ViewAccount() {
   const [ETHAccount,setETHAccount] = useState("");
   const [PublicKey,setPublicKey] = useState(null);
   const [PrivateKey,setPrivateKey] = useState("");
+  const[PayzBalance,setPayzBalance] = useState("");
   const navigation = useNavigation();
 
-
-const GOERLIRPC = "https://goerli.infura.io/v3/c24c8ebb1b7c447aa3e95e28e11e6532"
-
+//const contract = new ethers.Contract(contractAddress, contractABI, provider);
+const GOERLIRPC = "https://polygon-mumbai.infura.io/v3/c24c8ebb1b7c447aa3e95e28e11e6532"
+const provider = new ethers.providers.JsonRpcProvider(GOERLIRPC);
 
   const retrieveData = async (key) => {
     try {
@@ -28,7 +30,7 @@ const GOERLIRPC = "https://goerli.infura.io/v3/c24c8ebb1b7c447aa3e95e28e11e6532"
       if (value !== null) {
         console.log('Data retrieved successfully:', value);
         setETHAccount(value)
-      } else {
+      } else { 
         console.log('Data not found');
       }
     } catch (error) {
@@ -36,10 +38,11 @@ const GOERLIRPC = "https://goerli.infura.io/v3/c24c8ebb1b7c447aa3e95e28e11e6532"
     }
   };
 
+  
+ 
 
   const GetMyAccount = async()=>{
     try{
-      const provider = new ethers.providers.JsonRpcProvider(GOERLIRPC);
       const wallet = new ethers.Wallet(ETHAccount);
       const address = wallet.address;
       console.log("Provider",address)
@@ -47,16 +50,31 @@ const GOERLIRPC = "https://goerli.infura.io/v3/c24c8ebb1b7c447aa3e95e28e11e6532"
       console.log("ProviderError")}
   }
 
+  const ERC20ContractInstance = async () => {
+    try {
+      const wallet = new ethers.Wallet(ETHAccount,provider);
+      const address = wallet.address;
+      const contractAddress = '0x4115fCDA6dF06eabF4F8d91f12Eeb209289447cC';
+      const contract = new ethers.Contract(contractAddress, ERC20ABI, wallet);
+      const balance = await contract.GetPayzBalance(address);
+      const formattedBalance = ethers.utils.formatUnits(balance);
+      const mint = await contract.Mint(address, { gasLimit: 200000 });
+      await mint.wait();
+      setPayzBalance(formattedBalance);
+  
+      console.log("ADDRESS BALANCE", formattedBalance);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-
-  //const [ETHBalance, setETHBalance] = useState<string>("");
 
   const GetAccountBalance = async (): Promise<void> => {
     try {
       const provider = new ethers.providers.JsonRpcProvider(GOERLIRPC);
       const wallet = new ethers.Wallet(ETHAccount);
       const address = wallet.address;
-      const balance = await provider.getBalance('0x390be0D2Da9eDC0F85Ff09bfBFC874Bc8Ab665A6');
+      const balance = await provider.getBalance(address);
       console.log("Balance", ethers.utils.formatEther(balance))
       setETHBalance(parseFloat(ethers.utils.formatEther(balance)))
     } catch (err) {
@@ -65,23 +83,12 @@ const GOERLIRPC = "https://goerli.infura.io/v3/c24c8ebb1b7c447aa3e95e28e11e6532"
     }
   }
   
-  
-
-
-const AccountGetter = async()=>{
-  const account =  await GetInsertedData();
-  /* --TODO in the case of specific selection
-  create sqlite query that triggers public key by ID
-  */
-  const MYAccount = account[0]
-  SetAccount(MYAccount)
-  console.log("dwidiwrf",Account)
-}
 
 useEffect(() => {
   retrieveData("PrivateKey");
   GetMyAccount();
   GetAccountBalance();
+  //ERC20ContractInstance();
 })
 
 
@@ -92,7 +99,7 @@ useEffect(() => {
     <PricingCard
         color={lightColors.primary}
         title="Balance"
-        price={ETHBalance}
+        price={PayzBalance}
         info={[`$ Balance: 0,ETH Balance:${ETHBalance.toFixed(3)}`]}
         button={{ title: ' Añadir más', icon: 'add-circle' }}
       />

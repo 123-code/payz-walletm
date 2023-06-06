@@ -88,7 +88,7 @@ useEffect(() => {
   retrieveData("PrivateKey");
   GetMyAccount();
   GetAccountBalance();
-  //ERC20ContractInstance();
+  ERC20ContractInstance();
 })
 
 

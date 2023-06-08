@@ -1,54 +1,55 @@
 import React from 'react';
-import { View, StyleSheet,Pressable,Image,TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Pressable, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Text, Stack } from "@react-native-material/core";
+import { Text } from "@react-native-material/core";
 import "@ethersproject/shims"
-//pagomedios
+
 const Welcome = () => {
-    const navigation = useNavigation();
-    return(
-        <>
-         <View style={styles.container} >
-            <Text  variant="h1" style={styles.title}> Bienvenido a Payz</Text>
-            <Text> </Text>
-            <Text variant="h1" style={styles.text}> verifica tu número celular para ingresar  </Text>
-            </View>
-            <View style={ styles.btncontainer}> 
-<Text style={styles.text}> Ingresa con </Text>
-<Text>
-  
-</Text>
-<Pressable  
-  style={styles.Pressable}
+  const navigation = useNavigation();
+
+  return (
+    <View style={styles.container}>
+      <Text variant="h1" style={styles.title}>Bienvenido a Payz</Text>
+      <Text style={styles.subtitle}>Verifica tu número celular para ingresar</Text>
+
+      <View style={styles.buttonContainer}>
+      
+
+      <TouchableOpacity style={styles.button} onPress={() => {}}>
+          <Image
+            style={styles.buttonLogo}
+            source={{
+              uri: 'https://discussions.apple.com/content/attachment/980278040',
+            }}
+          />
+          <Text style={styles.buttonText}>Ingresar con SMS</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={() => {}}>
+          <Image
+            style={styles.buttonLogo}
+            source={{
+              uri: 'https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/image8-2.jpg?width=1190&height=800&name=image8-2.jpg',
+            }}
+          />
+          <Text style={styles.buttonText}>Ingresar con Google</Text>
+        </TouchableOpacity>
 
 
-  onPress={() => {
-    navigation.navigate('PhoneNumberInput');
-  }}>
-  <Text style={styles.buttontext}> SMS </Text>
-</Pressable>
+        <TouchableOpacity style={styles.button} onPress={() => {}}>
+          <Image
+            style={styles.buttonLogo}
+            source={{
+              uri: 'https://seeklogo.com/images/T/twitter-icon-square-logo-108D17D373-seeklogo.com.png',
+            }}
+          />
+          <Text style={styles.buttonText}>Ingresar con Twitter</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
 
-<Text>
-  
-</Text>
-
-<TouchableOpacity style={styles.buttonContainer}>
-      <Image
-        style={styles.googleLogo}
-        source={{
-          uri: 'https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/image8-2.jpg?width=1190&height=800&name=image8-2.jpg',
-        }}
-      />
-      <Text style={styles.buttonText}>Ingresa con Google</Text>
-    </TouchableOpacity>
-
-
-
-
-            </View>
-        </>
-    )
-}
 export default Welcome;
 
 const styles = StyleSheet.create({
@@ -56,72 +57,51 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 80,
+    paddingHorizontal: 40, // Adjust the horizontal padding
     backgroundColor: '#EEDED6',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
   },
-  btncontainer: {
-    flex: 1,
+  title: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: 'green',
+    fontFamily: 'Futura',
+    marginBottom: 130,
+    textAlign: 'center', // Center the text horizontally
+  },
+  subtitle: {
+    fontSize: 24,
+    color: 'black',
+    fontFamily: 'Futura',
+    marginBottom: 70,
+    textAlign: 'center', // Center the text horizontally
+  },
+  buttonContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "#EEDED6",
+    marginTop: 20, // Add some space at the top
   },
-    title:{
-        fontSize: 40,
-        fontWeight: 'bold',
-        color: 'green',
-        fontFamily:'Futura'
-    },
-    text:{
-        fontSize: 30,
-        color: 'black',
-        fontFamily:'Futura',
-    },
-    button:{
-        fontSize: 30,
-        color: 'black',
-        fontFamily:'Futura',
+  button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#000000',
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    elevation: 2,
+    marginBottom: 10,
+    width: '80%', // Adjust the width of the buttons
+  },
+  buttonLogo: {
+    width: 24,
+    height: 24,
+    marginRight: 10,
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    fontFamily: 'Futura',
+  },
 
-    },
-    buttontext:{
-        fontSize: 30,
-        color: 'white',
-        fontFamily:'Futura',
-    },
-    Pressable:{
-        backgroundColor: 'black',
-        borderRadius: 8,
-      paddingVertical: 10,
-      paddingHorizontal: 15,
-      elevation: 2,
-    
-
-    }, buttonContainer: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#ffffff',
-      borderRadius: 8,
-      paddingVertical: 10,
-      paddingHorizontal: 15,
-      elevation: 2,
-    },
-    googleLogo: {
-      width: 24,
-      height: 24,
-      marginRight: 10,
-    },
-    buttonText: {
-      fontSize: 16,
-      fontWeight: 'bold',
-      color: '#000000',
-    },
-})
+});

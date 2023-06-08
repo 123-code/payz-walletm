@@ -1,20 +1,12 @@
 import React,{useState,useEffect} from 'react';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { Input } from 'native-base';
-import { encryptPassword } from '../util/EncryptKeyPin';
-import {CreateSQLiteTable,
-StorePrivateKeyHash,
-CheckIfTableExists,
-CheckInsertedData,
-StorePublicKey
-}  from '../util/SQLiteconn'
 import { useNavigation } from '@react-navigation/native';
 import { GenerateWallet,EncryptValues } from '../util/JavascriptKeyGen';
 import PayzButton from '../Components/PayzButton';
-import { SaveEncryptedPIN } from '../util/GetPinHash';
-//import { EncryptValues } from '../util/EncryptKeyPin';
+import { Base64 } from 'js-base64';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-//StorePrivateKeyHash
 export default function CreatePIN() {
   const navigation = useNavigation();
   const [numbers, setNumbers] = useState({
@@ -23,8 +15,6 @@ export default function CreatePIN() {
     Number3: 0,
     Number4: 0,
   });
-
-
 
 
 
@@ -45,20 +35,24 @@ const GenerateBitcoinKeys = ()=>{
   }
 }
 
+const SaveData = async(value)=>{
+  try{
+    await AsyncStorage.setItem('pinhash',value)
+  }catch(err){
+    console.error(err)
+  }
+}
+
+
+
 const HandleSubmit = async () => {
   navigation.navigate('CreatingAccount')
-  try{
-    await CreateSQLiteTable();
-    const tableExists = await CheckIfTableExists();
-    console.log(`Table created: ${tableExists}`);
-    const private_key = await GenerateBitcoinKeys();
-    SaveEncryptedPIN(numbers)
-    await StorePrivateKeyHash(private_key);
-    const created = await CheckInsertedData();
-    console.log(`Account created: ${created}`);
-  }catch(err){
-    console.error(err);
-  }
+   const data = Object.values(numbers).join('');
+   console.log(data)
+   const Data = Base64.encode(data);
+    console.log(Data)
+   SaveData(Data);
+
 };
 
   return (

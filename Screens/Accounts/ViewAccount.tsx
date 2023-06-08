@@ -3,9 +3,6 @@ import { useNavigation } from '@react-navigation/native';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { PricingCard, lightColors } from '@rneui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {GetInsertedData} from '../../util/SQLiteconn';
-import {GetWalletBTCBalance} from '../../util/GetWalletBTCBalance';
-import WalletBalance from '../../Components/WalletBalance';
 import PayzButton from '../../Components/PayzButton';
 import { ethers } from 'ethers';
 import { ERC20ABI } from '../../ABIs/ERC20'

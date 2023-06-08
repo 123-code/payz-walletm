@@ -15,6 +15,7 @@ import AccountName from '../Screens/Accounts/AccountName';
 import HasAccountWelcome from '../Screens/HasAccountWelcome';
 import WelcomeBack from '../Screens/WelcomeBack';
 import Select from '../Screens/Select';
+import SelectNetwork from '../Screens/Select';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,20 +43,21 @@ export default function AppStack(){
     return (
         ///* <Stack.Screen name="ViewAccount" component={ViewAccount}/>
 <Stack.Navigator>
-<Stack.Screen name="ViewAccount" component={ViewAccount}/>
+<Stack.Screen name="Select" component={Select}/>
 <Stack.Screen name="Welcome" component={Welcome}/>
 {ShowSignUp ? console.log('nothing') : <Stack.Screen name="HasAccountWelcome" component={HasAccountWelcome}/>}
-<Stack.Screen name="Select" component={Select}/>
+
 <Stack.Screen name="WelcomeBack" component={WelcomeBack}/>
 <Stack.Screen name="CreatePIN" component={CreatePIN}/>
 <Stack.Screen name="PhoneNumberInput" component={PhoneNumberInput}/>
 <Stack.Screen name="Otp" component={Otp}/>
 <Stack.Screen name="Gated" component={Gated}/>
+<Stack.Screen name="SelectNetwork" component={SelectNetwork}/>
 <Stack.Screen name="CreatingAccount" component={CreatingAccount}/>
 <Stack.Screen name="AccountName" component={AccountName}/>
 <Stack.Screen name="AccountSelector" component={AccountSelector}/>
 <Stack.Screen name="Creating" component={Creating}/>
-
+<Stack.Screen name="ViewAccount" component={ViewAccount}/>
 <Stack.Screen name="PinAuth" component={PinAuth}/>
 
 

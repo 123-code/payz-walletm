@@ -127,17 +127,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#212121', // Update the background color to a futuristic style
+    backgroundColor: '#212121', 
   },
   title: {
     fontFamily: 'Futura',
-    color: 'gray', // Update the title color to white
+    color: 'gray', 
     fontSize: 24,
     marginBottom: 20,
   },
   card: {
     width: '80%',
-    backgroundColor: '#212121', // Update the card background color
+    backgroundColor: '#212121', 
     borderRadius: 8,
     padding: 20,
   },
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    color: 'white', // Update the text color to white
+    color: 'white', 
     fontFamily: 'Futura',
     textAlign: 'center',
     marginBottom: 20,

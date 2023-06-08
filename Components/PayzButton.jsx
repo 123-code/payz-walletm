@@ -11,7 +11,7 @@ const PayzButton = ({ onPress, label }) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#000000',
+    backgroundColor: '#39FF14',
     height: 60,
     borderRadius: 30,
     justifyContent: 'center',
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   label: {
-    color: '#ffffff',
+    color: 'black',
     fontSize: 20,
     fontWeight: 'bold',
    

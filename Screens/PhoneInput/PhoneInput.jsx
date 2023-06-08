@@ -58,7 +58,7 @@ import {
 const styles = StyleSheet.create({
  container: {
    flex: 1,
-   backgroundColor: "#EEDED6",
+   backgroundColor: '#212121',
  },
 
  wrapper: {
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
    width: 300,
    justifyContent: "center",
    alignItems: "center",
-   backgroundColor: "#7CDB8A",
+   backgroundColor: '#39FF14',
    shadowColor: "rgba(0,0,0,0.4)",
    shadowOffset: {
      width: 1,
@@ -85,13 +85,15 @@ const styles = StyleSheet.create({
  },
 
  buttonText: {
-   color: "white",
+   color: "black",
    fontSize: 14,
     fontWeight: "bold",
     fontFamily: "Futura",
  },
  text:{
-  fontFamily: "Futura"
+  fontFamily: "Futura",
+  color: "white",
+  fontweight: "bold",
  },
 
  welcome: {

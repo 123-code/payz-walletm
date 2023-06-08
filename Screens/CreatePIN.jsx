@@ -46,7 +46,7 @@ const SaveData = async(value)=>{
 
 
 const HandleSubmit = async () => {
-  navigation.navigate('CreatingAccount')
+  navigation.navigate("SelectNetwork")
    const data = Object.values(numbers).join('');
    console.log(data)
    const Data = Base64.encode(data);
@@ -59,6 +59,7 @@ const HandleSubmit = async () => {
     <>
       <View style={styles.container}>
       <Text style={styles.title}>Crea un PIN</Text>
+      <Text></Text>
       <Text style={styles.message}>
        {`Tu pin proveerá seguridad adicional para que accedas a tu cuenta`}
      </Text>
@@ -70,6 +71,7 @@ const HandleSubmit = async () => {
         <Input mx={1}  w="20%"  style={styles.input} onChangeText={(text)=>HandleInputChange('Number3',text)} />
         <Input mx={1}  w="20%" style={styles.input} onChangeText={(text)=>HandleInputChange('Number4',text)} />
       </View>
+    <Text></Text>
       <PayzButton label="Listo" onPress={HandleSubmit}/>
     </>
   );
@@ -100,6 +102,7 @@ const styles = StyleSheet.create({
   message: {
     fontSize: 16,
     paddingHorizontal: 30,
+    fontFamily: 'Futura',
   }, button: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -115,5 +118,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
+    fontFamily: 'Futura',
   },
 });

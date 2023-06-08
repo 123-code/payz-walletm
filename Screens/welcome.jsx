@@ -13,7 +13,7 @@ const Welcome = () => {
       <Text style={styles.subtitle}>INGRESA A TU CUENTA CON:</Text>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={() => {navigation.navigate("PhoneNumberInput")}}>
           <Image
             style={styles.buttonLogo}
             source={{
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 40,
-    backgroundColor: '#212121', // Update the background color to a futuristic style
+    backgroundColor: '#212121', 
   },
   title: {
     fontSize: 40,
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'green',
+    backgroundColor: '#39FF14',
     borderRadius: 8,
     paddingVertical: 10,
     paddingHorizontal: 15,
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: 'black',
     fontFamily: 'Futura',
     letterSpacing: 1.5,
   },

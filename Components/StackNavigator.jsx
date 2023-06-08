@@ -42,6 +42,7 @@ export default function AppStack(){
     return (
         ///* <Stack.Screen name="ViewAccount" component={ViewAccount}/>
 <Stack.Navigator>
+<Stack.Screen name="ViewAccount" component={ViewAccount}/>
 <Stack.Screen name="Welcome" component={Welcome}/>
 {ShowSignUp ? console.log('nothing') : <Stack.Screen name="HasAccountWelcome" component={HasAccountWelcome}/>}
 <Stack.Screen name="Select" component={Select}/>
@@ -54,7 +55,7 @@ export default function AppStack(){
 <Stack.Screen name="AccountName" component={AccountName}/>
 <Stack.Screen name="AccountSelector" component={AccountSelector}/>
 <Stack.Screen name="Creating" component={Creating}/>
-<Stack.Screen name="ViewAccount" component={ViewAccount}/>
+
 <Stack.Screen name="PinAuth" component={PinAuth}/>
 
 

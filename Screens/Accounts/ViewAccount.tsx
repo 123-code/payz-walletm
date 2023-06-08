@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
-import { PricingCard, lightColors } from '@rneui/themed';
+import { PricingCard} from '@rneui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import PayzButton from '../../Components/PayzButton';
+import { lightColors, Card, Button } from '@rneui/themed';
 import { ethers } from 'ethers';
 import { ERC20ABI } from '../../ABIs/ERC20'
 
@@ -92,38 +93,120 @@ useEffect(() => {
     return(
     <>
     <View style={styles.container}>
-      <Text style={styles.text}> Mi Cuenta: </Text>
-    <PricingCard
-        color={lightColors.primary}
-        title="Balance"
-        price={PayzBalance}
-        info={[`$ Balance: 0,ETH Balance:${ETHBalance.toFixed(3)}`]}
-        button={{ title: ' Añadir más', icon: 'add-circle' }}
-      />
+      <Text style={styles.text}> Mi cuenta: </Text>
     
-<PayzButton label="transferir"/>
+      <Card style={styles.card}>
+        <Card.Title style={styles.title}>BILLETERA</Card.Title>
+        <Card.Divider />
+        <View style={styles.balanceContainer}>
+  <View style={[styles.balanceItem, styles.balanceItemWithSpace]}>
+    <Text style={styles.balanceLabel}>Payz Balance</Text>
+    <Text style={styles.balanceValue}>0</Text>
+  </View>
+  <View style={styles.balanceItem}>
+    <Text style={styles.balanceLabel}>ETH Balance</Text>
+    <Text style={styles.balanceValue}>{ETHBalance.toFixed(3)}</Text>
+  </View>
+
+</View>
+        <Pressable style={styles.tpbutton}>
+         <Text style={styles.buttonText}> AÑADIR MÁS + </Text> 
+        </Pressable>
+      </Card>
+    
+    <Text> r </Text>
+<Pressable style={styles.button}>
+ <Text style={styles.buttonText}> TRANSFERIR ERC-20 </Text> 
+</Pressable>
         </View>
         </>
     )
 }
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      backgroundColor: '#EEDED6'
-    },
-    horizontal: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      padding: 10,
-    },
-    text:{
-      fontSize: 20,
-      color: 'black',
-      fontFamily:'Futura',
-      justifyContent: 'center',
-      alignItems: 'center',
-      textAlign: 'center',
-    },
-    
-  });
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#212121', // Update the background color to a futuristic style
+  },
+  title: {
+    fontFamily: 'Futura',
+    color: 'gray', // Update the title color to white
+    fontSize: 24,
+    marginBottom: 20,
+  },
+  card: {
+    width: '80%',
+    backgroundColor: '#212121', // Update the card background color
+    borderRadius: 8,
+    padding: 20,
+  },
+  balanceItemWithSpace: {
+    marginBottom: 10,
+  },
+  text: {
+    fontSize: 20,
+    color: 'white', // Update the text color to white
+    fontFamily: 'Futura',
+    textAlign: 'center',
+    marginBottom: 20,
+    fontWeight: 'bold',
+  },
+  balanceLabel: {
+    fontFamily: 'Futura',
+    color: 'gray', 
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#39FF14',
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    elevation: 2,
+    marginBottom: 10,
+    width: '80%',
+  },
+  tpbutton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#39FF14',
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    elevation: 2,
+    marginBottom: 10,
+    width: '90%',
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
+    fontFamily: 'Futura',
+    letterSpacing: 1.5,
+  },
+  balanceItem: {
+    fontFamily: 'Futura',
+    flexDirection: 'column',
+    alignItems: 'flex-start', 
+    marginBottom: 10,
+  },
+  balanceValue: {
+    fontFamily: 'Futura',
+    color: 'gray', 
+    fontSize: 24,
+  },
+   balanceContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  topUpButton: {
+    backgroundColor: '#39FF14', 
+    borderRadius: 8,
+  },
+});

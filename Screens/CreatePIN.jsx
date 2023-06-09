@@ -6,6 +6,9 @@ import { GenerateWallet,EncryptValues } from '../util/JavascriptKeyGen';
 import {PayzBlackButton} from '../Components/PayzButton';
 import { Base64 } from 'js-base64';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+var bcrypt = require('bcryptjs');
+var salt = bcrypt.genSaltSync(10);
+
 
 export default function CreatePIN() {
   const navigation = useNavigation();
@@ -37,7 +40,9 @@ const GenerateBitcoinKeys = ()=>{
 
 const SaveData = async(value)=>{
   try{
-    await AsyncStorage.setItem('pinhash',value)
+    var hash = bcrypt.hashSync(value, salt);
+    console.log("HASH",hash)
+    await AsyncStorage.setItem('pinhash',hash)
   }catch(err){
     console.error(err)
   }
@@ -48,10 +53,7 @@ const SaveData = async(value)=>{
 const HandleSubmit = async () => {
   navigation.navigate("SelectNetwork")
    const data = Object.values(numbers).join('');
-   console.log(data)
-   const Data = Base64.encode(data);
-    console.log(Data)
-   SaveData(Data);
+   SaveData(data);
 
 };
 

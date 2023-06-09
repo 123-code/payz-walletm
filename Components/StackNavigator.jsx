@@ -43,10 +43,11 @@ export default function AppStack(){
     return (
         ///* <Stack.Screen name="ViewAccount" component={ViewAccount}/>
 <Stack.Navigator>
+<Stack.Screen name="Select" component={Select}/>
 <Stack.Screen name="CreatePIN" component={CreatePIN}/>
 <Stack.Screen name="Welcome" component={Welcome}/>
 {ShowSignUp ? console.log('nothing') : <Stack.Screen name="HasAccountWelcome" component={HasAccountWelcome}/>}
-<Stack.Screen name="Select" component={Select}/>
+
 <Stack.Screen name="WelcomeBack" component={WelcomeBack}/>
 
 <Stack.Screen name="PhoneNumberInput" component={PhoneNumberInput}/>

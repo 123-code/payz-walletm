@@ -145,12 +145,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   text: {
-    fontSize: 20,
-    color: 'white', 
+    fontSize: 24,
+    color: 'white',
+    fontWeight: '600',
     fontFamily: 'Futura',
+    marginBottom: 70,
     textAlign: 'center',
-    marginBottom: 20,
-    fontWeight: 'bold',
   },
   balanceLabel: {
     fontFamily: 'Futura',

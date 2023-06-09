@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
    shadowOpacity: 0.34,
    shadowRadius: 6.27,
    elevation: 10,
+   borderRadius: 30,
  },
 
  buttonText: {
@@ -91,9 +92,12 @@ const styles = StyleSheet.create({
     fontFamily: "Futura",
  },
  text:{
-  fontFamily: "Futura",
-  color: "white",
-  fontweight: "bold",
+  fontSize: 24,
+    color: 'white',
+    fontWeight: '400',
+    fontFamily: 'Futura',
+    marginBottom: 40,
+    textAlign: 'center',
  },
 
  welcome: {

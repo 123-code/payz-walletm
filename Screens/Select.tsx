@@ -85,8 +85,7 @@ const StoreData = async (key: string, value: string): Promise<void> => {
         return (
           <View style={styles.container}> 
              <Text style={styles.text}>Listo, tu cuenta ya fue creada! </Text>
-             <Text></Text>
-              <Text></Text>
+ 
               <Text style={styles.text}>Tu dirección es: </Text>
              <Card>
         <Card.Title style={styles.title}>{Address}</Card.Title>
@@ -128,11 +127,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   text:{
-    fontSize: 20,
+    fontSize: 24,
     color: 'white',
-    fontFamily:'Futura',
-    justifyContent: 'center',
-    alignItems: 'center',
+    fontWeight: '600',
+    fontFamily: 'Futura',
+    marginBottom: 30,
+    textAlign: 'center',
   },
   button: {
     flexDirection: 'row',
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: 24,
     fontWeight: 'bold',
     color: 'black',
     fontFamily: 'Futura',

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet,Pressable } from 'react-native';
 import { Input } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import { GenerateWallet,EncryptValues } from '../util/JavascriptKeyGen';
-import PayzButton from '../Components/PayzButton';
+import {PayzBlackButton} from '../Components/PayzButton';
 import { Base64 } from 'js-base64';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -72,7 +72,7 @@ const HandleSubmit = async () => {
         <Input mx={1}  w="20%" style={styles.input} onChangeText={(text)=>HandleInputChange('Number4',text)} />
       </View>
     <Text></Text>
-      <PayzButton label="Listo" onPress={HandleSubmit}/>
+      <PayzBlackButton label="Listo" onPress={HandleSubmit}/>
     </>
   );
 }

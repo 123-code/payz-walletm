@@ -25,7 +25,6 @@
     "balance-crypto": "^0.2.15",
     "bcrypt-react-native": "^1.1.1",
     "bcryptjs": "^2.4.3",
-    "crypto-js": "^4.1.1",
     "dotenv": "^16.0.3",
     "ethers": "5.6.1",
     "expo": "~48.0.9",
@@ -61,6 +60,7 @@
     "react-native-toast-message": "^2.1.6",
     "react-native-vector-icons": "^9.2.0",
     "readable-stream": "^3.6.2",
+    "stream": "^0.0.2",
     "web3": "^1.9.0"
   },
   "devDependencies": {

@@ -7,9 +7,9 @@ import { Layout,Spinner } from '@ui-kitten/components';
 import PayzButton from ".././Components/PayzButton";
 import { useNavigation } from '@react-navigation/native';
 import { lightColors, Card, Button } from '@rneui/themed';
-import { ToastContainer } from 'react-native-toast-message';
+import  ToastContainer  from 'react-native-toast-message';
 import Toast from 'react-native-toast-message';
-import CryptoJS from 'crypto-js'
+//import CryptoJS from 'crypto-js'
 import { RandomBytes } from 'react-native-crypto';
 
 
@@ -24,10 +24,7 @@ export default function Select() {
  // Move away  functionfrom here 
  // key should be pin 
  const EncodePrivateKey = (pk:string) => {
-  const randomBytes = RandomBytes(16);
-  const cyphertext = CryptoJS.AES.encrypt(pk, randomBytes).toString();
-  console.log("Cypher", cyphertext);
-  return cyphertext;
+
 };
 
 /////

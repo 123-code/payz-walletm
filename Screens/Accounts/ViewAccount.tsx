@@ -7,7 +7,7 @@ import PayzButton from '../../Components/PayzButton';
 import { lightColors, Card, Button } from '@rneui/themed';
 import { ethers } from 'ethers';
 import { ERC20ABI } from '../../ABIs/ERC20'
-import CryptoJS from 'crypto-js'
+//import CryptoJS from 'crypto-js'
 
 export default function ViewAccount() {
   const [ETHBalance, setETHBalance] = useState<number>(0);
@@ -40,11 +40,9 @@ const provider = new ethers.providers.JsonRpcProvider(GOERLIRPC);
   TODO move function away from here..
   */ 
   const DecodePrivateKey = (pk:string)=>{
-    let bytes = CryptoJS.AES.decrypt(pk,'.');
-    let plaintext = bytes.toString(CryptoJS.enc.Utf8);
-    return plaintext;
+    
   }
- 
+
 
   const GetMyAccount = async()=>{
     try{

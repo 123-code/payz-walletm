@@ -97,98 +97,139 @@ useEffect(() => {
 
 
 return (
-  <View style={styles.container}>
-    <Text style={styles.text}>Mi cuenta:</Text>
+  <>
+    <View style={styles.container}>
+      <Text style={styles.text}>Mi cuenta:</Text>
 
-    <View style={styles.horizontalContainer}>
-      <View style={styles.balanceItem}>
-        <Text style={styles.balanceLabel}>ETH Balance:</Text>
-        <Text style={styles.balanceValue}>{ETHBalance.toFixed(3)}</Text>
+      <View style={styles.horizontalContainer}>
+        <View style={styles.balanceItem}>
+          <Text style={styles.balanceLabel}>ETH Balance:</Text>
+          <Text style={styles.balanceValue}>{ETHBalance.toFixed(3)}</Text>
+        </View>
+
+        <View style={styles.balanceItem}>
+          <Text style={styles.balanceLabel}>PTK Balance:</Text>
+          <Text style={styles.balanceValue}>{ETHBalance.toFixed(3)}</Text>
+        </View>
       </View>
 
-      <View style={styles.balanceItem}>
-      <Text style={styles.balanceLabel}>PTK Balance:</Text>
-      <Text style={styles.balanceValue}>{ETHBalance.toFixed(3)}</Text>
+      <View style={styles.horizontalContainer}>
+        <Pressable style={[styles.button, styles.smallButton]}>
+          <Text style={[styles.buttonText, styles.smallButtonText]}>Transferir</Text>
+        </Pressable>
+
+        <Pressable style={[styles.button, styles.smallButton]}>
+          <Text style={[styles.buttonText, styles.smallButtonText]}>Añadir más +</Text>
+        </Pressable>
+      </View>
+      <View style={styles.verticalContainer}>
+      <Pressable style={[styles.button, styles.Bigbutton]}>
+          <Text style={[styles.buttonText, styles.smallButtonText]}>Añadir más +</Text>
+        </Pressable>
+
+        <Pressable style={[styles.button, styles.Bigbutton]}>
+          <Text style={styles.buttonText}>Añadir más +</Text>
+        </Pressable>
+
+        <Pressable style={[styles.button, styles.Bigbutton]}>
+          <Text style={[styles.buttonText, styles.smallButtonText]}>Añadir más +</Text>
+        </Pressable>
       </View>
     </View>
-
-    <View style={styles.horizontalContainer}>
-      <Pressable style={[styles.button, styles.smallButton]}>
-        <Text style={[styles.buttonText, styles.smallButtonText]}>Transferir</Text>
-      </Pressable>
-
-      <Pressable style={[styles.button, styles.smallButton]}>
-        <Text style={[styles.buttonText, styles.smallButtonText]}>Añadir más +</Text>
-      </Pressable>
-    </View>
-  </View>
+  </>
 );
 };
 
 const styles = StyleSheet.create({
-container: {
-  flex: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: '#212121',
-},
-text: {
-  fontSize: 24,
-  color: 'white',
-  fontWeight: '700',
-  fontFamily: 'Futura',
-  marginBottom: 20,
-  textAlign: 'center',
-},
-horizontalContainer: {
-  flexDirection: 'row',
-  justifyContent: 'space-around',
-  alignItems: 'center',
-  marginBottom: 10,
-  width: '100%',
-},
-balanceItem: {
-  alignItems: 'center',
-  marginBottom: 10,
-},
-balanceLabel: {
-  fontFamily: 'Futura',
-  color: 'gray',
-  fontSize: 16,
-  marginBottom: 5,
-},
-balanceValue: {
-  fontFamily: 'Futura',
-  color: 'white',
-  fontSize: 24,
-  fontWeight: '600',
-  textAlign: 'center',
-},
-button: {
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: '#39FF14',
-  borderRadius: 8,
-  paddingVertical: 10,
-  paddingHorizontal: 8, // Adjust the value as desired
-  elevation: 2,
-  marginBottom: 359,
-  flex: 0.4, // Adjust the value as desired
-  marginHorizontal: 5,
-},
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: '#212121',
+  },
+  text: {
+    fontSize: 24,
+    color: 'white',
+    fontWeight: '700',
+    fontFamily: 'Futura',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  horizontalContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginBottom: 10,
+    width: '100%',
+  },
+  verticalContainer: {
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginBottom: 10,
+    width: '100%',
+  },
+  balanceItem: {
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  balanceLabel: {
+    fontFamily: 'Futura',
+    color: 'gray',
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  balanceValue: {
+    fontFamily: 'Futura',
+    color: 'white',
+    fontSize: 24,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#39FF14',
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 8, // Adjust the value as desired
+    elevation: 2,
+    marginBottom: 0, // Remove the marginBottom
+    flex: 0.4, // Adjust the value as desired
+    marginHorizontal: 5,
+    
+  },
 
-smallButton: {
-  paddingVertical: 8,
-},
-buttonText: {
-  fontSize: 16,
-  fontWeight: '600',
-  color: 'black',
-  fontFamily: 'Futura',
-  letterSpacing: 1.5,
-},
-smallButtonText: {
-  fontSize: 14,
-},
+  Bigbutton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#80808080',
+    borderRadius: 8,
+    paddingVertical: 40,
+    paddingHorizontal: 80, 
+    elevation: 2,
+    marginBottom: 1,
+    marginTop: 30,
+    flex: 0.4, 
+    height: 10, 
+    marginHorizontal: 5,
+  },
+
+  smallButton: {
+    paddingVertical: 8,
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: 'white',
+    fontFamily: 'Futura',
+    letterSpacing: 1.5,
+  },
+  smallButtonText: {
+    fontSize: 14,
+    color: 'black',
+    fontFamily: 'Futura',
+  },
 });

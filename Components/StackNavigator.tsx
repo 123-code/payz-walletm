@@ -1,22 +1,22 @@
 import React, { useState,useEffect } from 'react';
 import {CheckInsertedData} from '../util/SQLiteconn.js';
-import Welcome from '../Screens/welcome.js';
-import PhoneNumberInput from '../Screens/PhoneInput/PhoneInput.jsx';
-import CreatePIN from '../Screens/CreatePIN.js';
-import Otp from '../Screens/PhoneInput/OTP.jsx';
-import Gated from '../Screens/PhoneInput/Gated.jsx';
-import CreatingAccount from '../Screens/Accounts/CreatingAccount.jsx';
+import Welcome from '../Screens/welcome';
+import PhoneNumberInput from '../Screens/PhoneInput/PhoneInput';
+import CreatePIN from '../Screens/CreatePIN';
+import Otp from '../Screens/PhoneInput/OTP';
+import Gated from '../Screens/PhoneInput/Gated';
+import CreatingAccount from '../Screens/Accounts/CreatingAccount';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import AccountSelector from '../Screens/Accounts/HaveAccount.jsx';
-import ViewAccount from '../Screens/Accounts/ViewAccount.js';
-import Creating from '../Screens/Accounts/Creating.js'; 
-import PinAuth from '../Screens/Auth/PinAuth.js';
-import AccountName from '../Screens/Accounts/AccountName.js';
-import HasAccountWelcome from '../Screens/HasAccountWelcome.js';
-import WelcomeBack from '../Screens/WelcomeBack.js';
-import Select from '../Screens/Select.js';
-import SelectNetwork from '../Screens/Select.js';
-
+import AccountSelector from '../Screens/Accounts/HaveAccount';
+import ViewAccount from '../Screens/Accounts/ViewAccount';
+import Creating from '../Screens/Accounts/Creating'; 
+import PinAuth from '../Screens/Auth/PinAuth';
+import AccountName from '../Screens/Accounts/AccountName';
+import HasAccountWelcome from '../Screens/HasAccountWelcome';
+import WelcomeBack from '../Screens/WelcomeBack';
+import Select from '../Screens/Select';
+import SelectNetwork from '../Screens/Select';
+//An import path can only end with a '.tsx' extension when 'allowImportingTsExtensions' is enabled.
 const Stack = createNativeStackNavigator();
 
 export default function AppStack(){

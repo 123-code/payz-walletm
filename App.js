@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, Layout, Text } from '@ui-kitten/components';
-import AppStack from './Components/StackNavigator.jsx';
+import AppStack from './Components/StackNavigator.tsx';
 
 
 export default function App() {

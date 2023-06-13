@@ -85,6 +85,7 @@ const provider = new ethers.providers.JsonRpcProvider(GOERLIRPC);
       console.log("BalanceError")
     }
   }
+
   
 
 useEffect(() => {
@@ -95,123 +96,99 @@ useEffect(() => {
 })
 
 
-    return(
-    <>
-    <View style={styles.container}>
-      <Text style={styles.text}> Mi cuenta: </Text>
-    
-      <Card style={styles.card}>
-        <Card.Title style={styles.title}>BILLETERA</Card.Title>
-        <Card.Divider />
-        <View style={styles.balanceContainer}>
-  <View style={[styles.balanceItem, styles.balanceItemWithSpace]}>
-    <Text style={styles.balanceLabel}>Payz Balance</Text>
-    <Text style={styles.balanceValue}>0</Text>
-  </View>
-  <View style={styles.balanceItem}>
-    <Text style={styles.balanceLabel}>ETH Balance</Text>
-    <Text style={styles.balanceValue}>{ETHBalance.toFixed(3)}</Text>
-  </View>
+return (
+  <View style={styles.container}>
+    <Text style={styles.text}>Mi cuenta:</Text>
 
-</View>
-        <Pressable style={styles.tpbutton}>
-         <Text style={styles.buttonText}> AÑADIR MÁS + </Text> 
-        </Pressable>
-      </Card>
-    
-    <Text> r </Text>
-<Pressable style={styles.button}>
- <Text style={styles.buttonText}> TRANSFERIR ERC-20 </Text> 
-</Pressable>
-        </View>
-        </>
-    )
-}
+    <View style={styles.horizontalContainer}>
+      <View style={styles.balanceItem}>
+        <Text style={styles.balanceLabel}>ETH Balance:</Text>
+        <Text style={styles.balanceValue}>{ETHBalance.toFixed(3)}</Text>
+      </View>
+
+      <View style={styles.balanceItem}>
+      <Text style={styles.balanceLabel}>PTK Balance:</Text>
+      <Text style={styles.balanceValue}>{ETHBalance.toFixed(3)}</Text>
+      </View>
+    </View>
+
+    <View style={styles.horizontalContainer}>
+      <Pressable style={[styles.button, styles.smallButton]}>
+        <Text style={[styles.buttonText, styles.smallButtonText]}>Transferir</Text>
+      </Pressable>
+
+      <Pressable style={[styles.button, styles.smallButton]}>
+        <Text style={[styles.buttonText, styles.smallButtonText]}>Añadir más +</Text>
+      </Pressable>
+    </View>
+  </View>
+);
+};
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#212121', 
-  },
-  title: {
-    fontFamily: 'Futura',
-    color: 'gray', 
-    fontSize: 24,
-    marginBottom: 20,
-  },
-  card: {
-    width: '80%',
-    backgroundColor: '#212121', 
-    borderRadius: 8,
-    padding: 20,
-  },
-  balanceItemWithSpace: {
-    marginBottom: 10,
-  },
-  text: {
-    fontSize: 24,
-    color: 'white',
-    fontWeight: '600',
-    fontFamily: 'Futura',
-    marginBottom: 70,
-    textAlign: 'center',
-  },
-  balanceLabel: {
-    fontFamily: 'Futura',
-    color: 'gray', 
-    fontSize: 16,
-    marginBottom: 5,
-  },
-  button: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#39FF14',
-    borderRadius: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    elevation: 2,
-    marginBottom: 10,
-    width: '80%',
-  },
-  tpbutton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#39FF14',
-    borderRadius: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    elevation: 2,
-    marginBottom: 10,
-    width: '90%',
-  },
-  buttonText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'black',
-    fontFamily: 'Futura',
-    letterSpacing: 1.5,
-  },
-  balanceItem: {
-    fontFamily: 'Futura',
-    flexDirection: 'column',
-    alignItems: 'flex-start', 
-    marginBottom: 10,
-  },
-  balanceValue: {
-    fontFamily: 'Futura',
-    color: 'gray', 
-    fontSize: 24,
-  },
-   balanceContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 20,
-  },
-  topUpButton: {
-    backgroundColor: '#39FF14', 
-    borderRadius: 8,
-  },
+container: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#212121',
+},
+text: {
+  fontSize: 24,
+  color: 'white',
+  fontWeight: '700',
+  fontFamily: 'Futura',
+  marginBottom: 20,
+  textAlign: 'center',
+},
+horizontalContainer: {
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+  alignItems: 'center',
+  marginBottom: 10,
+  width: '100%',
+},
+balanceItem: {
+  alignItems: 'center',
+  marginBottom: 10,
+},
+balanceLabel: {
+  fontFamily: 'Futura',
+  color: 'gray',
+  fontSize: 16,
+  marginBottom: 5,
+},
+balanceValue: {
+  fontFamily: 'Futura',
+  color: 'white',
+  fontSize: 24,
+  fontWeight: '600',
+  textAlign: 'center',
+},
+button: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#39FF14',
+  borderRadius: 8,
+  paddingVertical: 10,
+  paddingHorizontal: 8, // Adjust the value as desired
+  elevation: 2,
+  marginBottom: 359,
+  flex: 0.4, // Adjust the value as desired
+  marginHorizontal: 5,
+},
+
+smallButton: {
+  paddingVertical: 8,
+},
+buttonText: {
+  fontSize: 16,
+  fontWeight: '600',
+  color: 'black',
+  fontFamily: 'Futura',
+  letterSpacing: 1.5,
+},
+smallButtonText: {
+  fontSize: 14,
+},
 });

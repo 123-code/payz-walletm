@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, StyleSheet,Pressable } from 'react-native';
-import { PricingCard} from '@rneui/themed';
+import { IconComponentProvider, Icon } from "@react-native-material/core";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import PayzButton from '../../Components/PayzButton';
+
 import { lightColors, Card, Button } from '@rneui/themed';
 import { ethers } from 'ethers';
 import { ERC20ABI } from '../../ABIs/ERC20'
@@ -99,8 +100,10 @@ useEffect(() => {
 return (
   <>
     <View style={styles.container}>
+    
       <Text style={styles.text}>Mi cuenta:</Text>
-
+      <Icon name="home" size={24} color="gray"/>
+      
       <View style={styles.horizontalContainer}>
         <View style={styles.balanceItem}>
           <Text style={styles.balanceLabel}>ETH Balance:</Text>
@@ -115,31 +118,44 @@ return (
 
       <View style={styles.horizontalContainer}>
         <Pressable style={[styles.button, styles.smallButton]}>
-          <Text style={[styles.buttonText, styles.smallButtonText]}>Transferir</Text>
+          <Text style={[styles.buttonText, styles.smallButtonText]}>Transferir
+          
+          </Text>
         </Pressable>
 
         <Pressable style={[styles.button, styles.smallButton]}>
           <Text style={[styles.buttonText, styles.smallButtonText]}>Añadir más +</Text>
         </Pressable>
 
-
-        
-        
       </View>
-
+     <Text style={styles.dividertext}> ─────────────── </Text>
+    
      <View style={styles.verticalContainer} >
   
       <Pressable style={styles.Bigbutton}>
-        <Text style={styles.buttonText}> Compra Crypto. </Text>
+        <Text style={styles.buttonText}> Compra Crypto 
+        <Icon name="bitcoin" size={24} color="white"/>
+         </Text>
       </Pressable>
 
      </View>
 
   <View style={styles.verticalContainer} >
   <Pressable style={styles.Bigbutton}>
-  <Text style={styles.buttonText}> Compra Crypto </Text>
+  
+  <Text style={styles.buttonText}> Cómo funciona  
+  <Icon name="camera-reverse-outline" size={24} color="white"/>
+ 
+   </Text>
   </Pressable>
  </View>
+
+ <Pressable style={[styles.button, styles.smallButton]}>
+<Text style={[styles.buttonText, styles.smallButtonText]}>
+<Icon name="upload" size={24} color="black"/>
+ </Text>
+</Pressable>
+
     </View>
   </>
 );
@@ -147,17 +163,28 @@ return (
 
 const styles = StyleSheet.create({
   container: {
+
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#212121',
   },
   text: {
+    marginTop: 32,
     fontSize: 24,
     color: 'white',
     fontWeight: '700',
     fontFamily: 'Futura',
     marginBottom: 20,
+    textAlign: 'center',
+  },
+  dividertext: {
+    marginTop: 2,
+    fontSize: 24,
+    color: 'white',
+    fontWeight: '400',
+    fontFamily: 'Futura',
+    marginBottom: 0,
     textAlign: 'center',
   },
   horizontalContainer: {
@@ -168,7 +195,8 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   verticalContainer: {
-    flexDirection: 'column'
+    flexDirection: 'column',
+    marginBottom: -120,
    
   },
   balanceItem: {
@@ -213,7 +241,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     elevation: 1,
     marginBottom: 0,
-    marginTop: 20,
+    marginTop: 30,
     flex: 0.3,
     width: '100%', // Stretch the button to full width
     marginHorizontal: 5,
@@ -238,5 +266,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: 'black',
     fontFamily: 'Futura',
+  },
+  divider: {
+    height: 1,
+    backgroundColor: 'gray',
+    marginVertical: 10,
   },
 });

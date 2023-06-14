@@ -150,11 +150,7 @@ return (
   </Pressable>
  </View>
 
- <Pressable style={[styles.button, styles.smallButton]}>
-<Text style={[styles.buttonText, styles.smallButtonText]}>
-<Icon name="upload" size={24} color="black"/>
- </Text>
-</Pressable>
+
 
     </View>
   </>

@@ -121,20 +121,25 @@ return (
         <Pressable style={[styles.button, styles.smallButton]}>
           <Text style={[styles.buttonText, styles.smallButtonText]}>Añadir más +</Text>
         </Pressable>
-      </View>
-      <View style={styles.verticalContainer}>
-      <Pressable style={[styles.button, styles.Bigbutton]}>
-          <Text style={[styles.buttonText, styles.smallButtonText]}>Añadir más +</Text>
-        </Pressable>
 
-        <Pressable style={[styles.button, styles.Bigbutton]}>
-          <Text style={styles.buttonText}>Añadir más +</Text>
-        </Pressable>
 
-        <Pressable style={[styles.button, styles.Bigbutton]}>
-          <Text style={[styles.buttonText, styles.smallButtonText]}>Añadir más +</Text>
-        </Pressable>
+        
+        
       </View>
+
+     <View style={styles.verticalContainer} >
+  
+      <Pressable style={styles.Bigbutton}>
+        <Text style={styles.buttonText}> Compra Crypto. </Text>
+      </Pressable>
+
+     </View>
+
+  <View style={styles.verticalContainer} >
+  <Pressable style={styles.Bigbutton}>
+  <Text style={styles.buttonText}> Compra Crypto </Text>
+  </Pressable>
+ </View>
     </View>
   </>
 );
@@ -163,11 +168,8 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   verticalContainer: {
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    marginBottom: 10,
-    width: '100%',
+    flexDirection: 'column'
+   
   },
   balanceItem: {
     alignItems: 'center',
@@ -204,29 +206,34 @@ const styles = StyleSheet.create({
   Bigbutton: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    //justifyContent: 'center',
     backgroundColor: '#80808080',
     borderRadius: 8,
-    paddingVertical: 40,
-    paddingHorizontal: 80, 
-    elevation: 2,
-    marginBottom: 1,
-    marginTop: 30,
-    flex: 0.4, 
-    height: 10, 
+    paddingVertical:1,
+    paddingHorizontal: 8,
+    elevation: 1,
+    marginBottom: 0,
+    marginTop: 20,
+    flex: 0.3,
+    width: '100%', // Stretch the button to full width
     marginHorizontal: 5,
+  
   },
+  
 
   smallButton: {
     paddingVertical: 8,
   },
-  buttonText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: 'white',
-    fontFamily: 'Futura',
-    letterSpacing: 1.5,
-  },
+ buttonText: {
+  fontSize: 16,
+  fontWeight: '600',
+  color: 'white', 
+  fontFamily: 'Futura',
+  letterSpacing: 1.5,
+  textAlign: 'center',
+ 
+
+},
   smallButtonText: {
     fontSize: 14,
     color: 'black',

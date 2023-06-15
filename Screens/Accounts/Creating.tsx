@@ -1,31 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text,StyleSheet } from 'react-native';
-import { Layout,Spinner } from '@ui-kitten/components';
-import  PayzButton  from '../../Components/PayzButton';
+import { View, Text, StyleSheet } from 'react-native';
+import { Layout, Spinner } from '@ui-kitten/components';
+import PayzButton from '../../Components/PayzButton';
 import { GetInsertedData } from '../../util/SQLiteconn';
-
+import { Encrypt } from '../../Components/Encrypt';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const CreateScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const[account,setaccount] = useState(null);
-    const navigation = useNavigation();
+  const [key, setKey] = useState('');
+  const navigation = useNavigation();
 
-
-    const getAccountItems = async () => {
-        try {
-          const items = await GetInsertedData();
-          console.log("items:", items);
-          const accounts = items.map((item) => item.hash);
-          console.log("Accounts: ", accounts);
-          setaccount(accounts[accounts.length-1]);
-        console.log("Account: ", account);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-
-
+ 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -33,10 +20,6 @@ const CreateScreen = () => {
     return () => clearTimeout(timer);
   }, []);
 
-
-    useEffect(() => {
-        getAccountItems();
-    })
 return(
   <>
   

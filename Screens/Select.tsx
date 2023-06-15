@@ -7,10 +7,11 @@ import { Layout,Spinner } from '@ui-kitten/components';
 import PayzButton from ".././Components/PayzButton";
 import { useNavigation } from '@react-navigation/native';
 import { lightColors, Card, Button } from '@rneui/themed';
-import  ToastContainer  from 'react-native-toast-message';
-import Toast from 'react-native-toast-message';
-//import CryptoJS from 'crypto-js'
-import { RandomBytes } from 'react-native-crypto';
+import { Encrypt } from "../Components/Encrypt";
+//import  ToastContainer  from 'react-native-toast-message';
+//import Toast from 'react-native-toast-message';
+//import CryptoJS from 'crypto-js' words
+import 'react-native-get-random-values';
 
 
 export default function Select() {
@@ -18,20 +19,50 @@ export default function Select() {
       const [PublicKey, setPublicKey] = useState("");
       const [Address, setAddress] = useState("");
       const [isLoading, setIsLoading] = useState(true);
+      const [key, setKey] = useState('');
+      const [privateKey, setPrivateKey] = useState('');
       const navigation = useNavigation();
+
 
 
  // Move away  functionfrom here 
  // key should be pin 
- const EncodePrivateKey = (pk:string) => {
 
+
+const retrieveData = async () => {
+  try {
+    const value = await AsyncStorage.getItem('pinhash');
+    if (value !== null) {
+      console.log('Data retrieved successfully:', value);
+      setKey(value);
+    } else {
+      console.log('Data not found');
+    }
+  } catch (error) {
+    console.error('Error retrieving data:', error);
+  }
 };
+
+const SaveData = async(value:any)=>{
+  try{
+    console.log("HASH",value)
+    await AsyncStorage.setItem('pinhash',value)
+  }catch(err){
+    console.error(err)
+  }
+}
+
+
+
 
 /////
 
       
 useEffect(()=>{
-     generateETHWallet();
+  const generatewallet = async()=>{
+    await generateETHWallet();
+  }
+  generatewallet();
 
 },[])
  
@@ -45,27 +76,6 @@ useEffect(() => {
 
 
 
-  const copyToClipboard = (text: string) => {
-    Clipboard.setString(text);
-    Toast.show({
-      type: 'success',
-      text1: 'Copiado al portapapeles',
-      position: 'bottom',
-      visibilityTime: 2000,
-      autoHide: true,
-    });
-  };
-
-
-const StoreData = async (key: string, value: string): Promise<void> => {
-    try {
-      await AsyncStorage.setItem(key, value);
-      console.log('Data stored successfully');
-    } catch (err) {
-      console.error('Error storing data:', err);
-    }
-  }; 
-
 
         const generateETHWallet = async (): Promise<void> => {
             const words = 12; 
@@ -74,9 +84,11 @@ const StoreData = async (key: string, value: string): Promise<void> => {
             let wallet = await generateWallet(mnemonic, chain);
             let  pwallet = JSON.parse(wallet);
             setAddress(pwallet.address); 
-      
-            StoreData("PrivateKey",pwallet.privateKey);
-            EncodePrivateKey(pwallet.privateKey);
+            setPrivateKey(pwallet.privateKey);
+           console.log( "KEY",pwallet.privateKey)
+           const pin = await retrieveData();
+           const Keys = await Encrypt(pin,pwallet.privateKey);
+           SaveData(Keys);
             return pwallet.privateKey;
         };
 
@@ -98,10 +110,6 @@ const StoreData = async (key: string, value: string): Promise<void> => {
               <Text style={styles.text}>Tu dirección es: </Text>
              <Card>
         <Card.Title style={styles.title}>{Address}</Card.Title>
-        <Pressable  onPress={() => copyToClipboard('Text to be copied')}> 
-        <Toast ref={(ref: ToastRef | null) => Toast.setRef(ref)} />
-          <Text> Copiar</Text>
-        </Pressable>
              </Card>
             
             <Text> </Text>

@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { lightColors, Card, Button } from '@rneui/themed';
 import { ethers } from 'ethers';
 import { ERC20ABI } from '../../ABIs/ERC20'
-//import CryptoJS from 'crypto-js'
+
 
 export default function ViewAccount() {
   const [ETHBalance, setETHBalance] = useState<number>(0);
@@ -101,7 +101,7 @@ return (
   <>
     <View style={styles.container}>
     
-      <Text style={styles.text}>Mi cuenta:</Text>
+      <Text style={styles.text}>Mi cuenta</Text>
       <Icon name="home" size={24} color="gray"/>
       
       <View style={styles.horizontalContainer}>

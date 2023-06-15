@@ -38,7 +38,7 @@ const GenerateBitcoinKeys = ()=>{
   }
 }
 
-const SaveData = async(value)=>{
+const SaveData = async(value:any)=>{
   try{
     var hash = bcrypt.hashSync(value, salt);
     console.log("HASH",hash)

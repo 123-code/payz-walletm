@@ -23,9 +23,10 @@ export default function ViewAccount() {
 const GOERLIRPC = "https://polygon-mumbai.infura.io/v3/c24c8ebb1b7c447aa3e95e28e11e6532"
 const provider = new ethers.providers.JsonRpcProvider(GOERLIRPC);
 
-  const retrieveData = async (key) => {
+  const retrieveData = async () => {
     try {
-      const value = await AsyncStorage.getItem(key);
+      const value = await AsyncStorage.getItem('pkhash');
+      console.log(value);
       if (value !== null) {
         console.log('Data retrieved successfully:', value);
         setETHAccount(value)
@@ -90,7 +91,7 @@ const provider = new ethers.providers.JsonRpcProvider(GOERLIRPC);
   
 
 useEffect(() => {
-  retrieveData("PrivateKey");
+  retrieveData();
   GetMyAccount();
   GetAccountBalance();
   ERC20ContractInstance();

@@ -12,6 +12,8 @@ import { Encrypt } from "../Components/Encrypt";
 //import Toast from 'react-native-toast-message';
 //import CryptoJS from 'crypto-js' words
 import 'react-native-get-random-values';
+var bcrypt = require('bcryptjs');
+var salt = bcrypt.genSaltSync(10);
 
 
 export default function Select() {
@@ -43,14 +45,31 @@ const retrieveData = async () => {
   }
 };
 
+
 const SaveData = async(value:any)=>{
   try{
-    console.log("HASH",value)
-    await AsyncStorage.setItem('pinhash',value)
+    var hash = bcrypt.hashSync(value, salt);
+    console.log("HASH",hash)
+    await AsyncStorage.setItem('pkhash',hash)
   }catch(err){
     console.error(err)
   }
 }
+
+
+/*
+const SaveData = async(value:any)=>{
+  try{
+    var hash = bcrypt.hashSync(value, salt);
+    console.log("HASH",hash)
+    await AsyncStorage.setItem('pinhash',hash)
+  }catch(err){
+    console.error(err)
+  }
+}
+*/
+
+
 
 
 
@@ -78,6 +97,7 @@ useEffect(() => {
 
 
         const generateETHWallet = async (): Promise<void> => {
+          try{
             const words = 12; 
             const mnemonic = await generateMnemonic(words);
             const chain = 'ETH';
@@ -87,9 +107,12 @@ useEffect(() => {
             setPrivateKey(pwallet.privateKey);
            console.log( "KEY",pwallet.privateKey)
            const pin = await retrieveData();
-           const Keys = await Encrypt(pin,pwallet.privateKey);
-           SaveData(Keys);
+    
+           SaveData(pwallet.privateKey)
             return pwallet.privateKey;
+
+          }catch(err){console.error(err)}
+           
         };
 
         if (isLoading) {

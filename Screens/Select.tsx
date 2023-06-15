@@ -8,9 +8,6 @@ import PayzButton from ".././Components/PayzButton";
 import { useNavigation } from '@react-navigation/native';
 import { lightColors, Card, Button } from '@rneui/themed';
 import { Encrypt } from "../Components/Encrypt";
-//import  ToastContainer  from 'react-native-toast-message';
-//import Toast from 'react-native-toast-message';
-//import CryptoJS from 'crypto-js' words
 import 'react-native-get-random-values';
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
@@ -24,11 +21,6 @@ export default function Select() {
       const [key, setKey] = useState('');
       const [privateKey, setPrivateKey] = useState('');
       const navigation = useNavigation();
-
-
-
- // Move away  functionfrom here 
- // key should be pin 
 
 
 const retrieveData = async () => {
@@ -51,30 +43,13 @@ const SaveData = async(value:any)=>{
     var hash = bcrypt.hashSync(value, salt);
     console.log("HASH",hash)
     await AsyncStorage.setItem('pkhash',hash)
+    // TODO DELETE THIS LINE, UNSAFE CODE 
+    await AsyncStorage.setItem('privatekey',value)
+    ////////
   }catch(err){
     console.error(err)
   }
 }
-
-
-/*
-const SaveData = async(value:any)=>{
-  try{
-    var hash = bcrypt.hashSync(value, salt);
-    console.log("HASH",hash)
-    await AsyncStorage.setItem('pinhash',hash)
-  }catch(err){
-    console.error(err)
-  }
-}
-*/
-
-
-
-
-
-
-/////
 
       
 useEffect(()=>{
@@ -118,7 +93,7 @@ useEffect(() => {
         if (isLoading) {
           return (
             <View>
-              <Layout>
+              <Layout style={styles.container}>
               <Spinner size='giant' />
               </Layout>
               <Text style={styles.text}>Creating...</Text>
@@ -139,7 +114,10 @@ useEffect(() => {
 
 
 
-            <PayzButton onPress={()=>{navigation.navigate("ViewAccount")}} label="continuar"/>
+            <Pressable style={styles.button} onPress={()=>{navigation.navigate('ViewAccount')}}>
+              <Text style={styles.buttonText}> Continuar </Text>
+              </Pressable>
+
           </View>
         );
 }
@@ -183,8 +161,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
     elevation: 2,
-    marginBottom: 10,
+    marginBottom: 1,
     width: '80%',
+    marginLeft: 50,
   },
   buttonLogo: {
     width: 24,

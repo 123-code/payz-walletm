@@ -38,12 +38,22 @@ const provider = new ethers.providers.JsonRpcProvider(GOERLIRPC);
     }
   };
 
-  /*
-  TODO move function away from here..
-  */ 
-  const DecodePrivateKey = (pk:string)=>{
-    
-  }
+
+
+  const retrievePKData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('privatekey');
+      console.log(value);
+      if (value !== null) {
+        console.log('Data retrieved successfully:', value);
+      
+      } else { 
+        console.log('Data not found');
+      }
+    } catch (error) {
+      console.error('Error retrieving data:', error);
+    }
+  };
 
 
   const GetMyAccount = async()=>{
@@ -92,6 +102,7 @@ const provider = new ethers.providers.JsonRpcProvider(GOERLIRPC);
 
 useEffect(() => {
   retrieveData();
+  retrievePKData();
   GetMyAccount();
   GetAccountBalance();
   ERC20ContractInstance();

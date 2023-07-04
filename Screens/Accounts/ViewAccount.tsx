@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
   },
  buttonText: {
   fontSize: 16,
-  fontWeight: '600',
+  fontWeight: '700',
   color: 'white', 
   fontFamily: 'Futura',
   letterSpacing: 1.5,

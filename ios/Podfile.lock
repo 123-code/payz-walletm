@@ -301,7 +301,7 @@ PODS:
     - react-native-config/App (= 1.5.0)
   - react-native-config/App (1.5.0):
     - React-Core
-  - react-native-get-random-values (1.8.0):
+  - react-native-get-random-values (1.9.0):
     - React-Core
   - react-native-randombytes (3.6.1):
     - React-Core
@@ -681,7 +681,7 @@ SPEC CHECKSUMS:
   React-logger: 0d58569ec51d30d1792c5e86a8e3b78d24b582c6
   react-native-aes: c75c46aa744bef7c2415fdf7f5b2dcb75ca4364d
   react-native-config: 5330c8258265c1e5fdb8c009d2cabd6badd96727
-  react-native-get-random-values: a6ea6a8a65dc93e96e24a11105b1a9c8cfe1d72a
+  react-native-get-random-values: dee677497c6a740b71e5612e8dbd83e7539ed5bb
   react-native-randombytes: 421f1c7d48c0af8dbcd471b0324393ebf8fe7846
   react-native-safe-area-context: 1d596539b05a78f2b346e954e7c577f6f9be7544
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457

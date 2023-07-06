@@ -13,7 +13,7 @@
     "@coingrig/wallet-generator": "^0.1.7",
     "@ethersproject/shims": "^5.7.0",
     "@eva-design/eva": "^2.2.0",
-    "@react-native-async-storage/async-storage": "^1.18.1",
+    "@react-native-async-storage/async-storage": "^1.19.0",
     "@react-native-community/clipboard": "^1.5.1",
     "@react-native-material/core": "^1.3.7",
     "@react-navigation/native": "^6.1.6",

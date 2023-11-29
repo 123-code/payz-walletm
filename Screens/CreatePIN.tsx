@@ -6,7 +6,7 @@ import { GenerateWallet,EncryptValues } from '../util/JavascriptKeyGen';
 import {PayzBlackButton} from '../Components/PayzButton';
 import { Base64 } from 'js-base64';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-var bcrypt = require('bcryptjs');
+var bcrypt = require('bcryptjs'); 
 var salt = bcrypt.genSaltSync(10);
 
 
@@ -21,7 +21,7 @@ export default function CreatePIN() {
 
 
 
-const HandleInputChange = (ename,evalue)=>{
+const HandleInputChange = (ename,evalue):any=>{
   setNumbers({
     ...numbers,
     [ename]:evalue
